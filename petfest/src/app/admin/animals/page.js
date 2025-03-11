@@ -133,11 +133,11 @@ export default function AnimalsPage() {
       )}
 
       <div className="mb-6 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Animal Management</h1>
+        <h1 className="text-2xl font-bold text-black">Animal Management</h1>
         <div className="flex space-x-2">
           <button 
             onClick={() => setViewMode('grid')} 
-            className={`p-2 rounded ${viewMode === 'grid' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+            className={`p-2 rounded ${viewMode === 'grid' ? 'bg-blue-500 text-black' : 'bg-gray-200'}`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
@@ -145,7 +145,7 @@ export default function AnimalsPage() {
           </button>
           <button 
             onClick={() => setViewMode('table')} 
-            className={`p-2 rounded ${viewMode === 'table' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+            className={`p-2 rounded ${viewMode === 'table' ? 'bg-blue-500 text-black' : 'bg-gray-200'}`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -155,7 +155,7 @@ export default function AnimalsPage() {
       </div>
 
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <h2 className="text-xl font-semibold mb-4">{editingId ? 'Edit Animal' : 'Add New Animal'}</h2>
+        <h2 className="text-xl font-semibold mb-4 text-black">{editingId ? 'Edit Animal' : 'Add New Animal'}</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
@@ -166,7 +166,7 @@ export default function AnimalsPage() {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 focus:border-blue-500"
+                  className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 focus:border-blue-500 text-black"
                   placeholder="Enter animal name"
                   required
                 />
@@ -180,7 +180,7 @@ export default function AnimalsPage() {
                   ref={fileInputRef}
                   onChange={handleImageChange}
                   accept=".png"
-                  className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 focus:border-blue-500"
+                  className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 focus:border-blue-500 text-black"
                 />
                 <p className="mt-1 text-sm text-gray-500">Please upload a PNG image file</p>
               </div>
@@ -205,7 +205,7 @@ export default function AnimalsPage() {
                   </button>
                 </div>
               ) : (
-                <div className="h-48 w-48 border-2 border-dashed border-gray-300 rounded-md flex items-center justify-center">
+                <div className="h-48 w-48 border-2 border-dashed border-black rounded-md flex items-center justify-center">
                   <div className="text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -240,7 +240,7 @@ export default function AnimalsPage() {
       {isLoading ? (
         <div className="text-center py-12">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
-          <p className="mt-2 text-gray-600">Loading animals...</p>
+          <p className="mt-2 text-black">Loading animals...</p>
         </div>
       ) : (
         animals.length === 0 ? (
@@ -248,7 +248,7 @@ export default function AnimalsPage() {
             <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
             </svg>
-            <p className="mt-2 text-gray-600">No animals found. Add your first animal using the form above.</p>
+            <p className="mt-2 text-black">No animals found. Add your first animal using the form above.</p>
           </div>
         ) : viewMode === 'grid' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -265,7 +265,7 @@ export default function AnimalsPage() {
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold">{animal.name}</h3>
+                  <h3 className="text-lg font-semibold text-black">{animal.name}</h3>
                   <div className="mt-4 flex justify-between">
                     <button
                       onClick={() => handleEdit(animal)}

@@ -1,9 +1,9 @@
 // src/app/admin/animals/[id]/page.js
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 export default function AnimalDetailsPage({ params }) {
   const router = useRouter();
@@ -24,15 +24,15 @@ export default function AnimalDetailsPage({ params }) {
       const res = await axios.get(`/api/animals/${animalId}`);
       setAnimal(res.data);
     } catch (error) {
-      console.error('Error fetching animal details:', error);
-      setError('Failed to load animal details');
+      console.error("Error fetching animal details:", error);
+      setError("Failed to load animal details");
     } finally {
       setIsLoading(false);
     }
   }
 
   function handleBack() {
-    router.push('/admin/animals');
+    router.push("/admin/animals");
   }
 
   if (isLoading) {
@@ -49,13 +49,21 @@ export default function AnimalDetailsPage({ params }) {
       <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
         <div className="flex">
           <div className="flex-shrink-0">
-            <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+            <svg
+              className="h-5 w-5 text-red-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                clipRule="evenodd"
+              />
             </svg>
           </div>
           <div className="ml-3">
             <p className="text-red-700">{error}</p>
-            <button 
+            <button
               onClick={handleBack}
               className="mt-2 px-3 py-1 text-sm text-blue-600 hover:underline"
             >
@@ -83,7 +91,7 @@ export default function AnimalDetailsPage({ params }) {
             Back to Animals
           </button>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <div className="rounded-lg overflow-hidden border">
@@ -94,7 +102,7 @@ export default function AnimalDetailsPage({ params }) {
               />
             </div>
           </div>
-          
+
           <div className="space-y-4">
             <div>
               <h3 className="text-lg font-semibold text-gray-700">Details</h3>
@@ -114,13 +122,17 @@ export default function AnimalDetailsPage({ params }) {
                 {animal.createdAt && (
                   <div className="flex justify-between py-2 border-b">
                     <span className="text-gray-600">Created:</span>
-                    <span className="font-medium">{new Date(animal.createdAt).toLocaleString()}</span>
+                    <span className="font-medium">
+                      {new Date(animal.createdAt).toLocaleString()}
+                    </span>
                   </div>
                 )}
                 {animal.updatedAt && (
                   <div className="flex justify-between py-2">
                     <span className="text-gray-600">Last Updated:</span>
-                    <span className="font-medium">{new Date(animal.updatedAt).toLocaleString()}</span>
+                    <span className="font-medium">
+                      {new Date(animal.updatedAt).toLocaleString()}
+                    </span>
                   </div>
                 )}
               </div>

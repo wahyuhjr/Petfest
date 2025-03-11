@@ -35,12 +35,18 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
-model SeoSettings {
-  id          Int      @id @default(autoincrement())
-  pageTitle   String
-  description String
-  keywords    String
-  ogImage     String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model SEO {
+  id           Int      @id @default(autoincrement())
+  pageType     String   // "home", "animal", "brand", "category", etc.
+  entityId     Int?     // Optional reference to specific entity ID
+  title        String
+  description  String   @db.Text
+  keywords     String   @db.Text
+  ogTitle      String?  // Open Graph title
+  ogDescription String? @db.Text
+  ogImage      String?  // Open Graph image URL
+  canonical    String?  // Canonical URL
+  structuredData Json?  // Structured data for rich snippets
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }

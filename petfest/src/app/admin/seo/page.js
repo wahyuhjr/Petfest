@@ -1,343 +1,444 @@
-'use client';
+// src/app/admin/seo/page.js
 
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+"use client";
 
-export default function SeoSettings() {
-  const [settings, setSettings] = useState({
-    siteTitle: '',
-    metaDescription: '',
-    keywords: '',
-    ogImage: '',
-    twitterHandle: '',
-    googleAnalyticsId: '',
-    facebookPixelId: '',
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+export default function SEOPage() {
+  const [seoEntries, setSeoEntries] = useState([]);
+  const [formData, setFormData] = useState({
+    pageType: "",
+    entityId: "",
+    title: "",
+    description: "",
+    keywords: "",
+    ogTitle: "",
+    ogDescription: "",
+    ogImage: "",
+    canonical: "",
   });
-  
-  const [isSaving, setIsSaving] = useState(false);
-  const [saveStatus, setSaveStatus] = useState({ show: false, type: '', message: '' });
-  const [charCount, setCharCount] = useState({
-    metaDescription: 0,
-    siteTitle: 0
+  const [editingId, setEditingId] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [notification, setNotification] = useState({
+    show: false,
+    type: "",
+    message: "",
   });
 
-  // Fetch current SEO settings
   useEffect(() => {
-    async function fetchSettings() {
+    fetchSEOEntries();
+  }, []);
+
+  async function fetchSEOEntries() {
+    try {
+      setIsLoading(true);
+      const res = await axios.get("/api/seo");
+      setSeoEntries(res.data.data);
+    } catch (error) {
+      showNotification("error", "Failed to load SEO entries");
+      console.error("Error fetching SEO entries:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  function showNotification(type, message) {
+    setNotification({ show: true, type, message });
+    setTimeout(
+      () => setNotification({ show: false, type: "", message: "" }),
+      3000
+    );
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const dataToSend = { ...formData };
+
+      // Convert entityId to number if it exists
+      if (dataToSend.entityId) {
+        dataToSend.entityId = parseInt(dataToSend.entityId);
+      } else {
+        delete dataToSend.entityId;
+      }
+
+      if (editingId) {
+        await axios.put(`/api/seo/${editingId}`, dataToSend);
+        showNotification("success", "SEO entry updated successfully");
+      } else {
+        await axios.post("/api/seo", dataToSend);
+        showNotification("success", "SEO entry added successfully");
+      }
+
+      // Reset form
+      resetForm();
+      fetchSEOEntries();
+    } catch (error) {
+      showNotification("error", "Operation failed");
+      console.error("Error saving SEO entry:", error);
+    }
+  }
+
+  async function handleDelete(id) {
+    if (confirm("Are you sure you want to delete this SEO entry?")) {
       try {
-        const res = await axios.get('/api/seo');
-        if (res.data) {
-          setSettings(res.data);
-          setCharCount({
-            metaDescription: res.data.metaDescription?.length || 0,
-            siteTitle: res.data.siteTitle?.length || 0
-          });
-        }
+        await axios.delete(`/api/seo/${id}`);
+        showNotification("success", "SEO entry deleted successfully");
+        fetchSEOEntries();
       } catch (error) {
-        showNotification('error', 'Failed to load SEO settings');
-        console.error('Error fetching SEO settings:', error);
+        showNotification("error", "Failed to delete SEO entry");
+        console.error("Error deleting SEO entry:", error);
       }
     }
-    
-    fetchSettings();
-  }, []);
-  
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    
-    setSettings(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    
-    // Update character count for tracked fields
-    if (name === 'metaDescription' || name === 'siteTitle') {
-      setCharCount(prev => ({
-        ...prev,
-        [name]: value.length
-      }));
-    }
-  };
-  
-  const showNotification = (type, message) => {
-    setSaveStatus({ show: true, type, message });
-    setTimeout(() => setSaveStatus({ show: false, type: '', message: '' }), 5000);
-  };
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSaving(true);
-    
-    try {
-      await axios.post('/api/seo', settings);
-      showNotification('success', 'SEO settings saved successfully!');
-    } catch (error) {
-      showNotification('error', error.response?.data?.message || 'Error saving settings');
-      console.error('Error saving SEO settings:', error);
-    } finally {
-      setIsSaving(false);
-    }
-  };
+  }
 
-  const handlePreview = () => {
-    // Create a preview of the meta tags
-    const html = `
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <title>${settings.siteTitle}</title>
-        <meta name="description" content="${settings.metaDescription}">
-        <meta name="keywords" content="${settings.keywords}">
-        <meta property="og:title" content="${settings.siteTitle}">
-        <meta property="og:description" content="${settings.metaDescription}">
-        <meta property="og:image" content="${settings.ogImage}">
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="${settings.twitterHandle}">
-      </head>
-      <body>
-        <h1>SEO Preview</h1>
-        <p>This is a preview of how your meta tags will appear.</p>
-        <button onclick="window.close()">Close</button>
-      </body>
-      </html>
-    `;
-    
-    const previewWindow = window.open('', 'SEO Preview', 'width=800,height=600');
-    previewWindow.document.write(html);
-  };
-  
+  function handleEdit(entry) {
+    setFormData({
+      pageType: entry.pageType || "",
+      entityId: entry.entityId?.toString() || "",
+      title: entry.title || "",
+      description: entry.description || "",
+      keywords: entry.keywords || "",
+      ogTitle: entry.ogTitle || "",
+      ogDescription: entry.ogDescription || "",
+      ogImage: entry.ogImage || "",
+      canonical: entry.canonical || "",
+    });
+    setEditingId(entry.id);
+  }
+
+  function resetForm() {
+    setFormData({
+      pageType: "",
+      entityId: "",
+      title: "",
+      description: "",
+      keywords: "",
+      ogTitle: "",
+      ogDescription: "",
+      ogImage: "",
+      canonical: "",
+    });
+    setEditingId(null);
+  }
+
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-xl font-semibold">SEO Settings</h1>
-        <button 
-          onClick={handlePreview}
-          type="button"
-          className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+    <div>
+      {notification.show && (
+        <div
+          className={`fixed top-4 right-4 z-50 p-4 rounded-md shadow-lg ${
+            notification.type === "success"
+              ? "bg-green-100 text-green-800 border-l-4 border-green-500"
+              : "bg-red-100 text-red-800 border-l-4 border-red-500"
+          }`}
         >
-          Preview Meta Tags
-        </button>
-      </div>
-      
-      {saveStatus.show && (
-        <div className={`p-4 mb-6 rounded-md ${saveStatus.type === 'success' ? 'bg-green-50 border border-green-200 text-green-700' : 'bg-red-50 border border-red-200 text-red-700'}`}>
-          <div className="flex">
-            <div className="flex-shrink-0">
-              {saveStatus.type === 'success' ? (
-                <svg className="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-              ) : (
-                <svg className="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 001.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                </svg>
-              )}
-            </div>
-            <div className="ml-3">
-              <p className="text-sm font-medium">{saveStatus.message}</p>
-            </div>
-          </div>
+          {notification.message}
         </div>
       )}
-      
-      <form onSubmit={handleSubmit} className="space-y-8">
-        {/* Basic SEO Section */}
-        <div className="bg-white shadow overflow-hidden rounded-lg">
-          <div className="px-4 py-5 border-b border-gray-200 sm:px-6">
-            <h3 className="text-lg font-medium leading-6 text-gray-900">Basic SEO Settings</h3>
-            <p className="mt-1 text-sm text-gray-500">Core meta information for search engines.</p>
-          </div>
-          <div className="px-4 py-5 sm:p-6 space-y-6">
+
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-black">SEO Management</h1>
+        <p className="text-gray-600">
+          Optimize your content for search engines
+        </p>
+      </div>
+
+      <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 className="text-xl font-semibold mb-4 text-black">
+          {editingId ? "Edit SEO Entry" : "Add New SEO Entry"}
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Site Title <span className="text-red-500">*</span>
+              <label
+                htmlFor="pageType"
+                className="block text-sm font-medium text-black mb-1"
+              >
+                Page Type*
               </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <input
-                  type="text"
-                  name="siteTitle"
-                  value={settings.siteTitle}
-                  onChange={handleChange}
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
-                  required
-                />
-                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                  <span className={`text-xs ${charCount.siteTitle > 60 ? 'text-red-500' : 'text-gray-500'}`}>
-                    {charCount.siteTitle}/60
-                  </span>
-                </div>
-              </div>
-              <p className="mt-1 text-xs text-gray-500">
-                Your website's title, displayed in browser tabs and search results (recommended: 50-60 characters)
-              </p>
+              <select
+                id="pageType"
+                value={formData.pageType}
+                onChange={(e) =>
+                  setFormData({ ...formData, pageType: e.target.value })
+                }
+                className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 focus:border-blue-500 text-black"
+                required
+              >
+                <option value="">Select Page Type</option>
+                <option value="global">Global (Site-wide)</option>
+              </select>
             </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Meta Description <span className="text-red-500">*</span>
-              </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
+
+            {/* <div>
+              <label htmlFor="entityId" className="block text-sm font-medium text-black mb-1">Entity ID (optional)</label>
+              <input
+                id="entityId"
+                type="number"
+                value={formData.entityId}
+                onChange={(e) => setFormData({...formData, entityId: e.target.value})}
+                className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 focus:border-blue-500 text-black"
+                placeholder="For animal/brand specific pages"
+              />
+              <p className="mt-1 text-xs text-black">Leave blank for general pages</p>
+            </div> */}
+          </div>
+
+          <div>
+            <label
+              htmlFor="title"
+              className="block text-sm font-medium text-black mb-1"
+            >
+              Title*
+            </label>
+            <input
+              id="title"
+              type="text"
+              value={formData.title}
+              onChange={(e) =>
+                setFormData({ ...formData, title: e.target.value })
+              }
+              className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 focus:border-blue-500 text-black"
+              placeholder="Meta title for the page"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium text-black mb-1"
+            >
+              Description*
+            </label>
+            <textarea
+              id="description"
+              value={formData.description}
+              onChange={(e) =>
+                setFormData({ ...formData, description: e.target.value })
+              }
+              className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 focus:border-blue-500 text-black"
+              placeholder="Meta description for the page"
+              rows={3}
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="keywords"
+              className="block text-sm font-medium text-black mb-1"
+            >
+              Keywords*
+            </label>
+            <input
+              id="keywords"
+              type="text"
+              value={formData.keywords}
+              onChange={(e) =>
+                setFormData({ ...formData, keywords: e.target.value })
+              }
+              className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 focus:border-blue-500 text-black"
+              placeholder="Keywords separated by commas"
+              required
+            />
+          </div>
+
+          <div className="border-t pt-4 mt-4">
+            <h3 className="font-medium text-black mb-2">
+              Open Graph Settings (Social Media)
+            </h3>
+
+            <div className="space-y-3">
+              <div>
+                <label
+                  htmlFor="ogTitle"
+                  className="block text-sm font-medium text-black mb-1"
+                >
+                  OG Title
+                </label>
+                <input
+                  id="ogTitle"
+                  type="text"
+                  value={formData.ogTitle}
+                  onChange={(e) =>
+                    setFormData({ ...formData, ogTitle: e.target.value })
+                  }
+                  className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 focus:border-blue-500 text-black"
+                  placeholder="Title for social media sharing"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="ogDescription"
+                  className="block text-sm font-medium text-black mb-1"
+                >
+                  OG Description
+                </label>
                 <textarea
-                  name="metaDescription"
-                  value={settings.metaDescription}
-                  onChange={handleChange}
-                  rows="3"
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
-                  required
-                ></textarea>
-                <div className="absolute bottom-2 right-2 pointer-events-none">
-                  <span className={`text-xs ${charCount.metaDescription > 160 ? 'text-red-500' : charCount.metaDescription < 120 ? 'text-yellow-500' : 'text-green-500'}`}>
-                    {charCount.metaDescription}/160
-                  </span>
-                </div>
-              </div>
-              <p className="mt-1 text-xs text-gray-500">
-                Concise description of your site (recommended: 120-160 characters)
-              </p>
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Keywords
-              </label>
-              <div className="mt-1">
-                <input
-                  type="text"
-                  name="keywords"
-                  value={settings.keywords}
-                  onChange={handleChange}
-                  placeholder="e.g. animals, pets, voting, cute"
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
+                  id="ogDescription"
+                  value={formData.ogDescription}
+                  onChange={(e) =>
+                    setFormData({ ...formData, ogDescription: e.target.value })
+                  }
+                  className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 focus:border-blue-500 text-black"
+                  placeholder="Description for social media sharing"
+                  rows={2}
                 />
               </div>
-              <p className="mt-1 text-xs text-gray-500">
-                Comma-separated keywords related to your site
-              </p>
+
+              <div>
+                <label
+                  htmlFor="ogImage"
+                  className="block text-sm font-medium text-black mb-1"
+                >
+                  OG Image URL
+                </label>
+                <input
+                  id="ogImage"
+                  type="text"
+                  value={formData.ogImage}
+                  onChange={(e) =>
+                    setFormData({ ...formData, ogImage: e.target.value })
+                  }
+                  className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 focus:border-blue-500 text-black"
+                  placeholder="URL to image for social media sharing"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        
-        {/* Social Media Section */}
-        <div className="bg-white shadow overflow-hidden rounded-lg">
-          <div className="px-4 py-5 border-b border-gray-200 sm:px-6">
-            <h3 className="text-lg font-medium leading-6 text-gray-900">Social Media Settings</h3>
-            <p className="mt-1 text-sm text-gray-500">Information for social media sharing.</p>
+
+          <div>
+            <label
+              htmlFor="canonical"
+              className="block text-sm font-medium text-black mb-1"
+            >
+              Canonical URL
+            </label>
+            <input
+              id="canonical"
+              type="text"
+              value={formData.canonical}
+              onChange={(e) =>
+                setFormData({ ...formData, canonical: e.target.value })
+              }
+              className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 focus:border-blue-500 text-black"
+              placeholder="Canonical URL if different from page URL"
+            />
           </div>
-          <div className="px-4 py-5 sm:p-6 space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                OG Image URL
-              </label>
-              <div className="mt-1">
-                <div className="flex rounded-md shadow-sm">
-                  <input
-                    type="text"
-                    name="ogImage"
-                    value={settings.ogImage}
-                    onChange={handleChange}
-                    placeholder="https://example.com/image.jpg"
-                    className="focus:ring-indigo-500 focus:border-indigo-500 flex-grow block w-full min-w-0 rounded-l-md sm:text-sm border-gray-300 p-2 border"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => window.open(settings.ogImage)}
-                    disabled={!settings.ogImage}
-                    className="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm disabled:opacity-50"
+
+          <div className="flex space-x-2 pt-4">
+            <button
+              type="submit"
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              {editingId ? "Update SEO Entry" : "Add SEO Entry"}
+            </button>
+            {editingId && (
+              <button
+                type="button"
+                onClick={resetForm}
+                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+              >
+                Cancel
+              </button>
+            )}
+          </div>
+        </form>
+      </div>
+
+      <div className="bg-white rounded-lg shadow-md overflow-hidden">
+        <h2 className="text-xl font-semibold p-6 border-b text-black">
+          SEO Entries
+        </h2>
+
+        {isLoading ? (
+          <div className="text-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
+            <p className="mt-2 text-black">Loading SEO entries...</p>
+          </div>
+        ) : seoEntries.length === 0 ? (
+          <div className="p-6 text-center">
+            <p className="text-black">
+              No SEO entries found. Add your first entry using the form above.
+            </p>
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider"
                   >
-                    Preview
-                  </button>
-                </div>
-                {settings.ogImage && (
-                  <div className="mt-2">
-                    <img src={settings.ogImage} alt="OG Preview" className="h-24 object-cover rounded-md" />
-                  </div>
-                )}
-              </div>
-              <p className="mt-1 text-xs text-gray-500">
-                Image URL shown when your site is shared on social media (optimal size: 1200x630 pixels)
-              </p>
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Twitter Handle
-              </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <span className="text-gray-500 sm:text-sm">@</span>
-                </div>
-                <input
-                  type="text"
-                  name="twitterHandle"
-                  value={settings.twitterHandle}
-                  onChange={handleChange}
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 sm:text-sm border-gray-300 rounded-md p-2 border"
-                  placeholder="yourtwitterhandle"
-                />
-              </div>
-            </div>
+                    ID
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider"
+                  >
+                    Page Type
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider"
+                  >
+                    Entity ID
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider"
+                  >
+                    Title
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-right text-xs font-medium text-black uppercase tracking-wider"
+                  >
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {seoEntries.map((entry) => (
+                  <tr key={entry.id}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-black">
+                      {entry.id}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
+                      {entry.pageType}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
+                      {entry.entityId || "Default"}
+                    </td>
+                    <td className="px-6 py-4 text-sm text-black max-w-xs truncate">
+                      {entry.title}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-right">
+                      <button
+                        onClick={() => handleEdit(entry)}
+                        className="text-indigo-600 hover:text-indigo-900 mr-4"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDelete(entry.id)}
+                        className="text-red-600 hover:text-red-900"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </div>
-        
-        {/* Analytics Section */}
-        <div className="bg-white shadow overflow-hidden rounded-lg">
-          <div className="px-4 py-5 border-b border-gray-200 sm:px-6">
-            <h3 className="text-lg font-medium leading-6 text-gray-900">Analytics Settings</h3>
-            <p className="mt-1 text-sm text-gray-500">Tracking and analytics configuration.</p>
-          </div>
-          <div className="px-4 py-5 sm:p-6 space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Google Analytics ID
-              </label>
-              <div className="mt-1">
-                <input
-                  type="text"
-                  name="googleAnalyticsId"
-                  value={settings.googleAnalyticsId}
-                  onChange={handleChange}
-                  placeholder="UA-XXXXXXXXX-X or G-XXXXXXXXXX"
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
-                />
-              </div>
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Facebook Pixel ID
-              </label>
-              <div className="mt-1">
-                <input
-                  type="text"
-                  name="facebookPixelId"
-                  value={settings.facebookPixelId}
-                  onChange={handleChange}
-                  placeholder="XXXXXXXXXXXXXXXX"
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="flex justify-end">
-          <button
-            type="submit"
-            disabled={isSaving}
-            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-          >
-            {isSaving ? (
-              <>
-                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Saving...
-              </>
-            ) : 'Save SEO Settings'}
-          </button>
-        </div>
-      </form>
+        )}
+      </div>
     </div>
   );
 }
