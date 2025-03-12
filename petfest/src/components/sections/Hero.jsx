@@ -17,7 +17,7 @@ const Hero = () => {
   return (
     <section className="bg-[#4F98CF] relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
       {/* Tulisan PETFEST */}
-      {/* <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex space-x-2 z-50">
+      <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex space-x-2 z-50">
         {letters.map((letter, index) => (
           <motion.img
             key={index}
@@ -33,7 +33,7 @@ const Hero = () => {
             }}
           />
         ))}
-      </div> */}
+      </div>
 
       {/* Pohon untuk desktop (2 pohon kiri & kanan) */}
       <div className="hidden md:flex absolute inset-0 justify-between items-center h-screen z-10">
