@@ -2,6 +2,7 @@
 
 import Head from "next/head";
 import { Navbar } from "./navbar";
+import Footer from "./Footer";
 
 const MainLayout = ({ children,title }) => {
   return (
@@ -17,11 +18,11 @@ const MainLayout = ({ children,title }) => {
       {/* Navbar */}
 
       {/* Main Content */}
-      <main className="min-h-screen">{children}</main>
+      <main className="">{children}</main>
       {/* Main Content */}
 
       {/* Footer */}
-
+        <Footer />
       {/* Footer */}
     </>
   );
