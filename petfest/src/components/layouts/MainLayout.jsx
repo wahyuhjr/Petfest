@@ -2,6 +2,7 @@
 
 import Head from "next/head";
 import { Navbar } from "./navbar";
+import Footer from "./Footer";
 
 const MainLayout = ({ children,title }) => {
   return (
@@ -21,7 +22,7 @@ const MainLayout = ({ children,title }) => {
       {/* Main Content */}
 
       {/* Footer */}
-
+        <Footer />
       {/* Footer */}
     </>
   );
