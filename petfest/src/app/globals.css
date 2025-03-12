@@ -33,8 +33,20 @@ body {
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Miso';
+  src: url('/fonts/miso.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .font-crunch-chips {
   font-family: 'Crunch Chips', sans-serif;
+}
+
+.font-miso {
+  font-family: 'Miso', sans-serif;
 }
 
 button {

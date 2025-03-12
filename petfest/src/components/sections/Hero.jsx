@@ -1,150 +1,83 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-
-const letters = [
-  "P.png",
-  "E-1.png",
-  "T-1.png",
-  "F.png",
-  "E-2.png",
-  "S.png",
-  "T-2.png",
-];
+import { useEffect, useState } from "react";
 
 const Hero = () => {
+  // Optional: State to track window dimensions for advanced responsive behavior
+  const [windowDimensions, setWindowDimensions] = useState({
+    width: typeof window !== "undefined" ? window.innerWidth : 1200,
+    height: typeof window !== "undefined" ? window.innerHeight : 800,
+  });
+
+  // Optional: Update dimensions on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+
   return (
-    <section className="bg-[#4F98CF] relative w-full h-screen flex flex-col justify-center items-center overflow-hidden p-4">
-      {/* Top Logos */}
-      <div className="absolute top-8 w-full max-w-4xl mx-auto flex justify-center z-20">
-        <div className="bg-white rounded-full px-8 py-3 flex items-center gap-4">
-          <Image
-            src="/images/LOGO PETFEST.png"
-            width={100}
-            height={40}
-            alt="ICE Logo"
-            className="h-8 w-auto object-contain"
-          />
-        </div>
-      </div>
+    <section className="relative w-full min-h-screen overflow-hidden">
+      {/* Background color - fallback if image is still loading */}
+      <div className="absolute inset-0 bg-[#4F98CF] z-0" />
 
-      {/* Main Content */}
-      <div className="relative z-20 text-center mt-24">
-        {/* PETFEST Title */}
-        <div className="flex justify-center space-x-2 mb-8">
-          {letters.map((letter, index) => (
-            <motion.div
-              key={index}
-              animate={{ rotate: [0, -3, 3, -2, 0] }}
-              transition={{
-                repeat: Infinity,
-                duration: 0.3,
-                ease: "easeInOut",
-                delay: index * 0.1,
-              }}
-            >
-              <Image
-                src={`/images/${letter}`}
-                width={80}
-                height={80}
-                alt={`Letter ${index + 1}`}
-                className="w-16 md:w-20 lg:w-24 h-auto"
-              />
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Subtitle */}
-        <h2 className="text-yellow-300 text-2xl md:text-4xl font-bold mb-6 text-center" style={{ textShadow: '2px 2px 0 #000' }}>
-          REDEFINING PET EXPO EXPERIENCE<br />
-          IN INDONESIA
-        </h2>
-
-        {/* Event Details */}
-        <div className="text-white text-xl md:text-3xl font-bold mb-12" style={{ textShadow: '2px 2px 0 #000' }}>
-          2ND-4TH MAY<br />
-          ICE BSD, HALL 6-8
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-          <button className="bg-[#FF69B4] hover:bg-[#FF1493] text-white font-bold py-3 px-8 rounded-full transform hover:scale-105 transition-transform duration-200 shadow-lg">
-            BCA RP 1
-          </button>
-          <button className="bg-[#FF69B4] hover:bg-[#FF1493] text-white font-bold py-3 px-8 rounded-full transform hover:scale-105 transition-transform duration-200 shadow-lg">
-            GENERAL ADMISSION
-          </button>
-          <button className="bg-[#FF69B4] hover:bg-[#FF1493] text-white font-bold py-3 px-8 rounded-full transform hover:scale-105 transition-transform duration-200 shadow-lg">
-            PRIVATE SESSION WITH JACKSON GALAXY
-          </button>
-        </div>
-      </div>
-
-      {/* Background Trees and Decorations */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Left Tree */}
-        <div className="absolute left-0 bottom-0 w-1/4">
-          <Image
-            src="/images/pohon-header-1.png"
-            width={300}
-            height={500}
-            alt="Left Tree"
-            className="w-full h-auto"
-          />
-        </div>
-
-        {/* Right Tree */}
-        <div className="absolute right-0 bottom-0 w-1/4">
-          <Image
-            src="/images/pohon-header-2.png"
-            width={300}
-            height={500}
-            alt="Right Tree"
-            className="w-full h-auto"
-          />
-        </div>
-
-        {/* Add decorative elements */}
-        <div className="absolute left-4 top-4">
-          <Image
-            src="/images/ASSET PENDUKUNG-03.png"
-            width={100}
-            height={100}
-            alt="Decoration"
-            className="w-20 h-20"
-          />
-        </div>
-        <div className="absolute right-4 top-4">
-          <Image
-            src="/images/ASSET PENDUKUNG-04.png"
-            width={100}
-            height={100}
-            alt="Decoration"
-            className="w-20 h-20"
-          />
-        </div>
-      </div>
-
-      {/* Animals */}
-      <div className="absolute bottom-20 left-1/4 z-10">
+      {/* Cartoon Scene Background - Using fill for better responsive behavior */}
+      <div className="absolute inset-0 z-10">
         <Image
-          src="/images/ASSET PENDUKUNG-05.png"
-          width={100}
-          height={100}
-          alt="Iguana"
-          className="w-24 h-24"
+          src="/images/bg-header.svg" // Use your actual image path
+          alt="Colorful pet scene with animals"
+          fill
+          priority
+          sizes="100vw"
+          quality={90}
+          className="object-cover object-center sm:object-contain md:object-cover lg:object-contain xl:object-cover"
         />
       </div>
-      <div className="absolute bottom-20 right-1/4 z-10">
-        <Image
-          src="/images/ASSET PENDUKUNG-06.png"
-          width={100}
-          height={100}
-          alt="Cat"
-          className="w-24 h-24"
-        />
+
+      {/* Option 1: If you want to add text/content on top of the background */}
+      <div className="relative z-20 container mx-auto px-4 py-10 h-screen flex flex-col justify-center items-center">
+        {/* Your content here */}
+        {/* Example: <h1 className="text-4xl md:text-6xl font-bold text-white">PET FEST</h1> */}
       </div>
+      
+      {/* 
+        Option 2: If using fixed position images for specific elements
+        This allows more precise positioning of elements at different breakpoints
+      */}
+      {windowDimensions.width > 768 && (
+        <>
+          {/* Example: Positioned animals that only appear on larger screens */}
+          <div className="hidden md:block absolute bottom-[10%] left-[15%] w-[20%] max-w-[180px] z-20">
+            <Image
+              src="/motion/iguana.gif" // Use your actual image path
+              width={180}
+              height={120}
+              alt="Iguana"
+              className="w-full h-auto"
+            />
+          </div>
+          
+          {/* Example: Cat positioned on right side */}
+          <div className="hidden md:block absolute bottom-[12%] right-[18%] w-[20%] max-w-[200px] z-20">
+            <Image
+              src="/motion/kucing-abu.gif" // Use your actual image path
+              width={200}
+              height={150}
+              alt="Cat"
+              className="w-full h-auto"
+            />
+          </div>
+        </>
+      )}
     </section>
   );
 };
