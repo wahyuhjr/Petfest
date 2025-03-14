@@ -3,81 +3,90 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const Hero = () => {
-  // Optional: State to track window dimensions for advanced responsive behavior
-  const [windowDimensions, setWindowDimensions] = useState({
-    width: typeof window !== "undefined" ? window.innerWidth : 1200,
-    height: typeof window !== "undefined" ? window.innerHeight : 800,
-  });
+const headerStyle = {
+  backgroundColor: "#DBCE02",
+  borderRadius: "9999px",
+  padding: "0rem 2rem",
+  borderTop: "2px solid #3D2000",
+  borderLeft: "4px solid #3D2000",
+  borderRight: "4px solid #3D2000",
+  borderBottom: "8px solid #3D2000",
+};
 
-  // Optional: Update dimensions on window resize
+const Hero = () => {
+  const [windowHeight, setWindowHeight] = useState(0);
+
+  // Mengambil tinggi jendela untuk responsivitas (jika diperlukan di pengembangan selanjutnya)
   useEffect(() => {
     const handleResize = () => {
-      setWindowDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+      setWindowHeight(window.innerHeight);
     };
 
-    if (typeof window !== "undefined") {
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }
+    // code;
+
+    // Set nilai awal
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden">
-      {/* Background color - fallback if image is still loading */}
-      <div className="absolute inset-0 bg-[#4F98CF] z-0" />
+    <section className="w-full min-h-screen flex overflow-hidden relative">
+      {/* Wrapper untuk background */}
+      <div className="relative w-full h-auto">
+        {/* Header dengan teks "SPECIAL GUEST STAR"  */}
+        <div className="absolute top-1/4 left-0 right-0 z-20 flex justify-center">
+          <Image
+            src="/motion/logo-petfest.gif"
+            alt="Special Guest Star"
+            width={400}
+            height={100}
+            priority
+            className="object-contain"
+          />
+        </div>
+        {/* Pohon kiri */}
+        <div className="absolute md:-top-10 left-0 z-10 flex items-end h-full">
+          <Image
+            src="/images/hero-tree-left.svg"
+            alt="Pohon kiri"
+            width={450}
+            height={400}
+            priority
+            className="object-contain"
+          />
+        </div>
 
-      {/* Cartoon Scene Background - Using fill for better responsive behavior */}
-      <div className="absolute inset-0 z-10">
-        <Image
-          src="/images/bg-header.svg" // Use your actual image path
-          alt="Colorful pet scene with animals"
-          fill
-          priority
-          sizes="100vw"
-          quality={90}
-          className="object-cover object-center sm:object-contain md:object-cover lg:object-contain xl:object-cover"
-        />
-      </div>
+        {/* Pohon kanan */}
+        <div className="absolute md:-top-15 right-0 z-10 flex items-end h-full">
+          <Image
+            src="/images/hero-tree-right.svg"
+            alt="Pohon kanan"
+            width={450}
+            height={400}
+            priority
+            className="object-contain"
+          />
+        </div>
 
-      {/* Option 1: If you want to add text/content on top of the background */}
-      <div className="relative z-20 container mx-auto px-4 py-10 h-screen flex flex-col justify-center items-center">
-        {/* Your content here */}
-        {/* Example: <h1 className="text-4xl md:text-6xl font-bold text-white">PET FEST</h1> */}
+        {/* Background image */}
+        <div className="w-full relative">
+          <Image
+            src="/images/bg-hero.jpg"
+            alt="Jungle background with brick wall"
+            width={0}
+            height={0}
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
+            className="w-full h-auto object-cover scale-x-[1.01] min-h-screen sm:min-h-0"
+            priority
+            style={{
+              display: "block",
+              objectPosition: "center",
+            }}
+          />
+        </div>
       </div>
-      
-      {/* 
-        Option 2: If using fixed position images for specific elements
-        This allows more precise positioning of elements at different breakpoints
-      */}
-      {windowDimensions.width > 768 && (
-        <>
-          {/* Example: Positioned animals that only appear on larger screens */}
-          <div className="hidden md:block absolute bottom-[10%] left-[15%] w-[20%] max-w-[180px] z-20">
-            <Image
-              src="/motion/iguana.gif" // Use your actual image path
-              width={180}
-              height={120}
-              alt="Iguana"
-              className="w-full h-auto"
-            />
-          </div>
-          
-          {/* Example: Cat positioned on right side */}
-          <div className="hidden md:block absolute bottom-[12%] right-[18%] w-[20%] max-w-[200px] z-20">
-            <Image
-              src="/motion/kucing-abu.gif" // Use your actual image path
-              width={200}
-              height={150}
-              alt="Cat"
-              className="w-full h-auto"
-            />
-          </div>
-        </>
-      )}
     </section>
   );
 };

@@ -15,9 +15,9 @@ const headerStyle = {
 
 const Brand = () => {
   const brands = [
-    { id: 1, name: "Blackwood", src: "/images/brands/blackwood.svg" },
-    { id: 2, name: "Dog Appétit", src: "/images/brands/dog-appetit.svg" },
-    { id: 3, name: "Boss Cat", src: "/images/brands/boss-cat.svg" },
+    { id: 1, name: "Blackwood", src: "/images/logo-aqua.png" },
+    { id: 2, name: "Dog Appétit", src: "/images/logo-bluebird.png" },
+    { id: 3, name: "Boss Cat", src: "/images/logo-htj.png" },
     { id: 4, name: "Frost", src: "/images/brands/frost.svg" },
     { id: 5, name: "Gem Kitty", src: "/images/brands/gem-kitty.svg" },
     { id: 6, name: "Petto", src: "/images/brands/petto.svg" },
@@ -35,7 +35,7 @@ const Brand = () => {
       <div className="absolute inset-0 bg-[#2AA6DE] z-0" />
 
       {/* Decorative tree elements - top left */}
-      <div className="absolute top-0 left-0 w-[20%] max-w-[150px] z-10">
+      <div className="absolute top-0 left-0 w-[20%] max-w-[180px] z-10">
         <Image
           src="/images/b-tree-left.svg"
           width={150}
@@ -46,11 +46,11 @@ const Brand = () => {
       </div>
 
       {/* Decorative tree elements - top right */}
-      <div className="absolute top-0 right-0 w-[20%] max-w-[150px] z-10">
+      <div className="absolute top-0 right-0 w-[20%] max-w-[180px] z-10">
         <Image
           src="/images/b-tree-right.svg"
-          width={150}
-          height={150}
+          width={350}
+          height={350}
           alt="Decorative element"
           className="w-full h-auto"
         />
