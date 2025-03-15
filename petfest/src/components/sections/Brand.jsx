@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@chakra-ui/react";
 import Image from "next/image";
 
 const headerStyle = {
