@@ -50,6 +50,18 @@ const Hero = () => {
           </div>
         </div> */}
 
+        {/* Monkey swing */}
+        <div className="absolute top-8 z-10 flex justify-center w-full">
+          <Image
+            src="/motion/monkey-desktop.gif"
+            alt="Decorative vine"
+            width={500}
+            height={500}
+            className="mx-auto w-[500px] h-[500px] md:w-[1000px] md:h-[1000px]"
+          />
+        </div>
+        {/* Monkey swing */}
+
         {/* Logo PETFEST */}
         <div className="absolute top-[15%] sm:top-[18%] md:top-[20%] left-0 right-0 z-20 flex flex-col items-center px-4 sm:px-8">
           <Image
@@ -137,7 +149,8 @@ const Hero = () => {
                   textShadow: "2px 2px 0 #3F1508",
                 }}
               >
-                GENERAL ADMISSION
+                GENERAL
+                <br /> ADMISSION
               </span>
               <div className="mt-1 text-center px-1">
                 <Button
