@@ -17,7 +17,7 @@ function ButtonStyled({ isMobile = false, label = "", limitWidth = false }) {
       }}
     >
       <span
-        className="text-lg sm:text-xl md:text-3xl font-bold text-white block text-center"
+        className="text-md sm:text-lg md:text-xl lg:text-3xl font-bold text-white block text-center"
         style={{
           textShadow: "2px 2px 0 #3F1508",
         }}
