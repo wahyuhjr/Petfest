@@ -118,24 +118,24 @@ const Hero = () => {
 
         {/* Hewan-hewan di halaman hero */}
         {/* Kucing - di bagian bawah kanan */}
-        <div className="absolute lg:bottom-[13%] bottom-[30%] right-0 md:-right-7 z-10 w-24 h-24 sm:w-36 sm:h-36 md:w-[350px] md:h-[300px]">
+        <div className="absolute lg:bottom-[13%] bottom-[0%] right-0 md:-right-7 z-10 w-24 h-24 sm:w-36 sm:h-36 md:w-[350px] md:h-[300px]">
           <Image
             src="/motion/kucing-abu.gif"
             alt="Cat"
             fill
-            sizes="(max-width: 640px) 96px, (max-width: 768px) 144px, 250px"
+            sizes="(max-width: 640px) 120px, (max-width: 768px) 144px, 250px"
             className="object-contain"
             priority
           />
         </div>
 
         {/* Iguana - di bagian bawah kiri */}
-        <div className="absolute bottom-[28%] md:bottom-[20%] left-4 md:left-20 z-10 w-24 h-24 sm:w-36 sm:h-36 md:w-[250px] md:h-[200px]">
+        <div className="absolute bottom-[0%] md:bottom-[20%] left-10 sm:left-4 md:left-20 z-10 w-24 h-24 sm:w-36 sm:h-36 md:w-[250px] md:h-[200px]">
           <Image
             src="/motion/iguana.gif"
             alt="Iguana"
             fill
-            sizes="(max-width: 640px) 96px, (max-width: 768px) 144px, 250px"
+            sizes="(max-width: 640px) 120px, (max-width: 768px) 144px, 250px"
             className="object-contain"
             priority
           />
@@ -156,7 +156,7 @@ const Hero = () => {
             className="w-full h-auto object-cover scale-x-[1.01] min-h-screen"
             priority
             style={{
-              objectPosition: "center center",
+              objectPosition: isMobile ? "center center" : "center center",
             }}
           />
         </div>
