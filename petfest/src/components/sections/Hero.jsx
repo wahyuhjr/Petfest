@@ -54,7 +54,7 @@ const Hero = () => {
             alt="Monkey swinging hero"
             width={500}
             height={500}
-            className="mx-auto w-[500px] h-[500px] md:w-[1000px] md:h-[1000px]"
+            className="mx-auto w-[350px] h-[300px] md:w-[1000px] md:h-[1000px]"
           />
         </div>
         {/* Monkey swing */}

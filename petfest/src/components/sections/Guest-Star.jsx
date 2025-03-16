@@ -101,7 +101,7 @@ const GuestStar = () => {
           alt="Monkey-swinging"
           width={500}
           height={500}
-          className="mx-auto w-[500px] h-[500px] md:w-[1500px] md:h-[1500px]"
+          className="mx-auto w-[350px] h-[300px] md:w-[1500px] md:h-[1500px]"
         />
       </div>
 
