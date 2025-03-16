@@ -10,7 +10,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="w-full bg-[#7B2F6C] p-6">
+    <nav className="w-full bg-[#7B2F6C] p-3">
       <div className="container mx-auto text-white">
         <div className="flex items-center justify-between">
           {/* Logo on the left */}
