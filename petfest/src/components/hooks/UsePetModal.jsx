@@ -116,7 +116,7 @@ const usePetModal = () => {
               <div key={index} className="flex flex-col items-center">
                 <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 flex items-center justify-center overflow-hidden">
                   {/* Menggunakan gambar dari array pets daripada emoji */}
-                  <div className="relative w-20 h-20 sm:w-14 sm:h-14 md:w-48 md:h-48 font-Crunch-Chips">
+                  <div className="relative w-20 h-20 sm:w-14 sm:h-14 md:w-48 md:h-48 font-crunch-chips">
                     <Image
                       src={pet.image}
                       alt={pet.name}
@@ -127,7 +127,7 @@ const usePetModal = () => {
                   </div>
                 </div>
                 <p
-                  className="text-white font-bold text-xs sm:text-sm md:text-xl my-1 sm:my-2 font-Crunch-Chips"
+                  className="text-white font-bold text-xs sm:text-sm md:text-xl my-1 sm:my-2 font-crunch-chips"
                   style={{
                     textShadow: "1px 1px 0 #3F1508",
                   }}
@@ -135,7 +135,7 @@ const usePetModal = () => {
                   {pet.name}
                 </p>
                 <button
-                  className="bg-yellow-300 rounded-xl px-2 sm:px-3 md:px-4 py-0.5 md:py-1 text-[10px] sm:text-xs md:text-base font-bold hover:translate-y-0.5 transition-all font-crucnh-chips text-white"
+                  className="bg-yellow-300 rounded-xl px-2 sm:px-3 md:px-4 py-0.5 md:py-1 text-[10px] sm:text-xs md:text-base font-bold hover:translate-y-0.5 transition-all font-crunch-chips text-white"
                   style={{
                     textShadow: "1px 1px 0 #3F1508",
                     boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
