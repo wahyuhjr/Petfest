@@ -118,7 +118,7 @@ const Hero = () => {
 
         {/* Hewan-hewan di halaman hero */}
         {/* Kucing - di bagian bawah kanan */}
-        <div className="absolute lg:bottom-[13%] bottom-[0%] right-0 md:-right-7 z-10 w-24 h-24 sm:w-36 sm:h-36 md:w-[350px] md:h-[300px]">
+        <div className="absolute lg:bottom-[13%] bottom-[10%] -right-7 md:-right-7 z-10 w-[180px] h-[200px] sm:w-36 sm:h-36 md:w-[350px] md:h-[300px]">
           <Image
             src="/motion/kucing-abu.gif"
             alt="Cat"
@@ -130,7 +130,7 @@ const Hero = () => {
         </div>
 
         {/* Iguana - di bagian bawah kiri */}
-        <div className="absolute bottom-[0%] md:bottom-[20%] left-10 sm:left-4 md:left-20 z-10 w-24 h-24 sm:w-36 sm:h-36 md:w-[250px] md:h-[200px]">
+        <div className="absolute bottom-[15%] md:bottom-[20%] left-10 sm:left-4 md:left-20 z-10 w-[180px] h-[180px] sm:w-36 sm:h-36 md:w-[250px] md:h-[200px]">
           <Image
             src="/motion/iguana.gif"
             alt="Iguana"
