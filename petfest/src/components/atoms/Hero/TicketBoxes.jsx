@@ -27,7 +27,7 @@ function TicketBoxes({ isMobile = false, view }) {
       >
         {/* BCA Rp1 button */}
         <div
-          className="bg-[#EC497F] rounded-lg px-4 py-2 sm:px-5 sm:py-2 md:px-8 shadow-md max-w-[200px] sm:max-w-[250px] border-2 border-black"
+          className="bg-[#EC497F] rounded-lg px-4 py-2 sm:px-5 sm:py-2 md:px-8 shadow-md max-w-[200px] sm:max-w-[250px] border-[1px] sm:border-2 border-black"
           style={{
             boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
           }}
@@ -57,7 +57,7 @@ function TicketBoxes({ isMobile = false, view }) {
         <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-3 md:space-x-4 w-full max-w-[90%] sm:max-w-[85%] md:max-w-[80%]">
           {/* General admission */}
           <div
-            className="bg-[#EC497F] rounded-lg px-4 py-2 sm:px-5 sm:py-2 md:px-8 shadow-md w-full sm:w-1/2 border-2 border-black"
+            className="bg-[#EC497F] rounded-lg px-4 py-2 sm:px-5 sm:py-2 md:px-8 shadow-md w-full sm:w-1/2 border-[1px] sm:border-2 border-black"
             style={{
               boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
             }}
@@ -86,7 +86,7 @@ function TicketBoxes({ isMobile = false, view }) {
 
           {/* Private session */}
           <div
-            className="bg-[#EC497F] rounded-lg px-4 py-2 sm:px-5 sm:py-2 md:px-8 shadow-md w-full sm:w-1/2 border-2 border-black"
+            className="bg-[#EC497F] rounded-lg px-4 py-2 sm:px-5 sm:py-2 md:px-8 shadow-md w-full sm:w-1/2 border-[1px] sm:border-2 border-black"
             style={{
               boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
             }}
