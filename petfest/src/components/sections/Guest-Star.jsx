@@ -35,7 +35,7 @@ const GuestStar = () => {
       <div className="relative w-full h-auto">
         <div className="absolute top-34 left-0 right-0 z-20 flex justify-center">
           <div className="px-6 py-2" style={headerStyle}>
-            <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
+            <h2 className="text-[#3F1508] font-Crunch-Chips text-2xl md:text-4xl lg:text-4xl text-center">
               SPECIAL GUEST STAR
             </h2>
           </div>
@@ -97,8 +97,8 @@ const GuestStar = () => {
 
       <div className="absolute top-8 z-10">
         <Image
-          src="/motion/monkey-desktop.gif"
-          alt="Monkey-swinging-guest"
+          src="/motion/Monkey-desktop.gif"
+          alt="Monkey-swinging"
           width={500}
           height={500}
           className="mx-auto w-[500px] h-[500px] md:w-[1500px] md:h-[1500px]"
@@ -122,7 +122,7 @@ const GuestStar = () => {
 
             {/* Name tag below photo */}
             <div className="mt-4 py-2 max-w-sm mx-auto" style={headerStyle}>
-              <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
+              <h2 className="text-[#3F1508] font-Crunch-Chips text-2xl md:text-4xl lg:text-4xl text-center">
                 JACKSON GALAXY
               </h2>
             </div>
