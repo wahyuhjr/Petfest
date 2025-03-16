@@ -1,150 +1,242 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-
-const letters = [
-  "P.png",
-  "E-1.png",
-  "T-1.png",
-  "F.png",
-  "E-2.png",
-  "S.png",
-  "T-2.png",
-];
+import { useEffect, useState } from "react";
+import usePetModal from "../hooks/UsePetModal";
+import { Button } from "../ui/button";
 
 const Hero = () => {
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const { PetModalComponent, autoShowModalAfter } = usePetModal();
+
+  // Auto-show modal setelah 2 detik, hanya jika belum pernah ditutup sebelumnya
+  autoShowModalAfter(2000);
+
+  // Mengambil lebar jendela untuk responsivitas
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setWindowWidth(width);
+      setIsMobile(width < 768); // Set mobile view if width is less than 768px
+    };
+
+    // Set nilai awal
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <section className="bg-[#4F98CF] relative w-full h-screen flex flex-col justify-center items-center overflow-hidden p-4">
-      {/* Top Logos */}
-      <div className="absolute top-8 w-full max-w-4xl mx-auto flex justify-center z-20">
-        <div className="bg-white rounded-full px-8 py-3 flex items-center gap-4">
+    <section className="w-full min-h-screen flex overflow-hidden relative">
+      <div className="relative w-full h-auto">
+        {/* Header dengan ICE logo */}
+        <div className="absolute top-[3%] sm:top-[5%] md:top-[8%] left-0 right-0 z-20 flex justify-center px-4 sm:px-0">
+          <div className="rounded-full flex items-center justify-center">
+            <Image
+              src="/images/logo-uss.svg"
+              alt="USS Logo"
+              width={isMobile ? 120 : 160}
+              height={isMobile ? 40 : 50}
+              className="w-[160px] sm:w-[180px] md:w-[500px] h-auto object-contain"
+              priority
+            />
+          </div>
+        </div>
+
+        {/* Monkey swing */}
+        <div className="absolute top-8 z-10 flex justify-center w-full">
           <Image
-            src="/images/LOGO PETFEST.png"
-            width={100}
-            height={40}
-            alt="ICE Logo"
-            className="h-8 w-auto object-contain"
+            src="/motion/monkey-desktop.gif"
+            alt="Decorative vine"
+            width={500}
+            height={500}
+            className="mx-auto w-[500px] h-[500px] md:w-[1000px] md:h-[1000px]"
           />
         </div>
-      </div>
+        {/* Monkey swing */}
 
-      {/* Main Content */}
-      <div className="relative z-20 text-center mt-24">
-        {/* PETFEST Title */}
-        <div className="flex justify-center space-x-2 mb-8">
-          {letters.map((letter, index) => (
-            <motion.div
-              key={index}
-              animate={{ rotate: [0, -3, 3, -2, 0] }}
-              transition={{
-                repeat: Infinity,
-                duration: 0.3,
-                ease: "easeInOut",
-                delay: index * 0.1,
+        {/* Logo PETFEST */}
+        <div className="absolute top-[7%] sm:top-[18%] md:top-[20%] left-0 right-0 z-20 flex flex-col items-center px-4 sm:px-8">
+          <Image
+            src="/motion/logo-petfest.gif"
+            alt="PetFest Logo"
+            width={isMobile ? 250 : 350}
+            height={isMobile ? 75 : 100}
+            priority
+            className="object-contain w-[80%] sm:w-[70%] md:w-[60%] max-w-[700px] h-auto"
+          />
+
+          {/* Tagline - Responsif text untuk mobile */}
+          <h2
+            className="text-lg sm:text-xl md:text-3xl lg:text-5xl font-crunch-chips font-bold mt-4 sm:mt-6 text-yellow-300 text-center px-2 sm:px-4"
+            style={{
+              WebkitTextStroke: isMobile ? "0.5px #3F1508" : "1px #3F1508",
+              textShadow: isMobile ? "1px 1px 0 #3F1508" : "2px 2px 0 #3F1508",
+              letterSpacing: "0.5px",
+              lineHeight: "1.2",
+            }}
+          >
+            REDEFINING PET EXPO EXPERIECE
+            <br />
+            IN INDONESIA
+          </h2>
+
+          {/* Event date and location - Ukuran font ditingkatkan pada mobile */}
+          <h3
+            className="text-lg sm:text-xl md:text-3xl lg:text-5xl font-crunch-chips font-bold mt-3 sm:mt-4 text-white text-center"
+            style={{
+              WebkitTextStroke: isMobile ? "0.5px #3F1508" : "1px #3F1508",
+              textShadow: isMobile ? "1px 1px 0 #3F1508" : "2px 2px 0 #3F1508",
+              letterSpacing: "0.5px",
+              lineHeight: "1.3",
+            }}
+          >
+            2ND–4TH MAY
+            <br />
+            ICE BSD, HALL 6–8
+          </h3>
+        </div>
+
+        {/* Ticket boxes - Pink boxes di bawah text ICE BSD */}
+        <div className="absolute bottom-[14%] lg:bottom-[25%] left-0 right-0 z-20 flex flex-col items-center space-y-3 sm:space-y-4 font-crunch-chips px-4 sm:px-6">
+          {/* BCA Rp1 button */}
+          <div
+            className="bg-[#EC497F] rounded-3xl px-4 py-2 sm:px-5 sm:py-2 md:px-8 shadow-md max-w-[60%] sm:max-w-[250px] border-2 border-black"
+            style={{
+              boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
+            }}
+          >
+            <span
+              className="text-lg sm:text-xl md:text-3xl font-bold text-white block text-center"
+              style={{
+                textShadow: "2px 2px 0 #3F1508",
               }}
             >
-              <Image
-                src={`/images/${letter}`}
-                width={80}
-                height={80}
-                alt={`Letter ${index + 1}`}
-                className="w-16 md:w-20 lg:w-24 h-auto"
-              />
-            </motion.div>
-          ))}
+              BCA Rp 1
+            </span>
+            <div className="mt-1 text-center px-1">
+              <Button
+                className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 font-crunch-chips border border-black"
+                style={{
+                  textShadow: "1px 1px 0 #3F1508",
+                  boxShadow: "1px 1px 0 #000",
+                }}
+              >
+                CLICK HERE
+              </Button>
+            </div>
+          </div>
+
+          {/* Ticket options in a row */}
+          <div className="flex flex-col sm:flex-row md:gap-6 justify-center space-y-3 sm:space-y-0 sm:space-x-3 w-full max-w-[90%] sm:max-w-[85%] md:max-w-[65%]">
+            {/* General admission */}
+            <div
+              className="bg-[#EC497F] rounded-3xl max-w-3/4 mx-auto lg:px-4 py-2 sm:px-5 sm:py-2 shadow-md w-full sm:w-1/2 border-2 border-black"
+              style={{
+                boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
+              }}
+            >
+              <span
+                className="text-lg sm:text-xl md:text-3xl font-bold text-white block text-center items-center md:mt-5"
+                style={{
+                  textShadow: "2px 2px 0 #3F1508",
+                }}
+              >
+                GENERAL ADMISSION
+              </span>
+              <div className="mt-1 text-center px-1">
+                <Button
+                  className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 font-crunch-chips border border-black"
+                  style={{
+                    textShadow: "1px 1px 0 #3F1508",
+                    boxShadow: "1px 1px 0 #000",
+                  }}
+                >
+                  CLICK HERE
+                </Button>
+              </div>
+            </div>
+
+            {/* Private session */}
+            <div
+              className="bg-[#EC497F] rounded-3xl max-w-3/4 mx-auto px-2 lg:px-4 py-2 sm:px-5 sm:py-2 md:px-8 shadow-md w-full sm:w-1/2 border-2 border-black"
+              style={{
+                boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
+              }}
+            >
+              <span
+                className="text-lg sm:text-xl md:text-3xl font-bold text-white block text-center"
+                style={{
+                  textShadow: "2px 2px 0 #3F1508",
+                }}
+              >
+                PRIVATE SESSION WITH
+                <br className={isMobile ? "hidden" : "block"} />
+                {isMobile ? " " : ""} JACKSON GALAXY
+              </span>
+              <div className="mt-1 text-center px-1">
+                <Button
+                  className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 font-crunch-chips border border-black"
+                  style={{
+                    textShadow: "1px 1px 0 #3F1508",
+                    boxShadow: "1px 1px 0 #000",
+                  }}
+                >
+                  CLICK HERE
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Subtitle */}
-        <h2 className="text-yellow-300 text-2xl md:text-4xl font-bold mb-6 text-center" style={{ textShadow: '2px 2px 0 #000' }}>
-          REDEFINING PET EXPO EXPERIENCE<br />
-          IN INDONESIA
-        </h2>
-
-        {/* Event Details */}
-        <div className="text-white text-xl md:text-3xl font-bold mb-12" style={{ textShadow: '2px 2px 0 #000' }}>
-          2ND-4TH MAY<br />
-          ICE BSD, HALL 6-8
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-          <button className="bg-[#FF69B4] hover:bg-[#FF1493] text-white font-bold py-3 px-8 rounded-full transform hover:scale-105 transition-transform duration-200 shadow-lg">
-            BCA RP 1
-          </button>
-          <button className="bg-[#FF69B4] hover:bg-[#FF1493] text-white font-bold py-3 px-8 rounded-full transform hover:scale-105 transition-transform duration-200 shadow-lg">
-            GENERAL ADMISSION
-          </button>
-          <button className="bg-[#FF69B4] hover:bg-[#FF1493] text-white font-bold py-3 px-8 rounded-full transform hover:scale-105 transition-transform duration-200 shadow-lg">
-            PRIVATE SESSION WITH JACKSON GALAXY
-          </button>
-        </div>
-      </div>
-
-      {/* Background Trees and Decorations */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Left Tree */}
-        <div className="absolute left-0 bottom-0 w-1/4">
+        {/* Hewan-hewan di halaman hero */}
+        {/* Kucing - di bagian bawah kanan */}
+        <div className="absolute lg:bottom-[13%] bottom-[30%] right-0 md:-right-7 z-10 w-24 h-24 sm:w-36 sm:h-36 md:w-[350px] md:h-[300px]">
           <Image
-            src="/images/pohon-header-1.png"
-            width={300}
-            height={500}
-            alt="Left Tree"
-            className="w-full h-auto"
+            src="/motion/kucing-abu.gif"
+            alt="Cat"
+            fill
+            sizes="(max-width: 640px) 96px, (max-width: 768px) 144px, 250px"
+            className="object-contain"
+            priority
           />
         </div>
 
-        {/* Right Tree */}
-        <div className="absolute right-0 bottom-0 w-1/4">
+        {/* Iguana - di bagian bawah kiri */}
+        <div className="absolute bottom-[28%] md:bottom-[20%] left-4 md:left-20 z-10 w-24 h-24 sm:w-36 sm:h-36 md:w-[250px] md:h-[200px]">
           <Image
-            src="/images/pohon-header-2.png"
-            width={300}
-            height={500}
-            alt="Right Tree"
-            className="w-full h-auto"
+            src="/motion/iguana.gif"
+            alt="Iguana"
+            fill
+            sizes="(max-width: 640px) 96px, (max-width: 768px) 144px, 250px"
+            className="object-contain"
+            priority
           />
         </div>
 
-        {/* Add decorative elements */}
-        <div className="absolute left-4 top-4">
+        {/* Background image */}
+        <div className="w-full relative">
           <Image
-            src="/images/ASSET PENDUKUNG-03.png"
-            width={100}
-            height={100}
-            alt="Decoration"
-            className="w-20 h-20"
-          />
-        </div>
-        <div className="absolute right-4 top-4">
-          <Image
-            src="/images/ASSET PENDUKUNG-04.png"
-            width={100}
-            height={100}
-            alt="Decoration"
-            className="w-20 h-20"
+            src="/images/bg-hero-2.jpg"
+            alt="Jungle background with brick wall"
+            width={1000}
+            height={1000}
+            sizes="100vw"
+            className="w-full h-auto object-cover scale-x-[1.01] min-h-screen"
+            priority
+            style={{
+              objectPosition: isMobile ? "center center" : "center center",
+            }}
           />
         </div>
       </div>
 
-      {/* Animals */}
-      <div className="absolute bottom-20 left-1/4 z-10">
-        <Image
-          src="/images/ASSET PENDUKUNG-05.png"
-          width={100}
-          height={100}
-          alt="Iguana"
-          className="w-24 h-24"
-        />
-      </div>
-      <div className="absolute bottom-20 right-1/4 z-10">
-        <Image
-          src="/images/ASSET PENDUKUNG-06.png"
-          width={100}
-          height={100}
-          alt="Cat"
-          className="w-24 h-24"
-        />
-      </div>
+      {/* Show Modal */}
+      <PetModalComponent />
     </section>
   );
 };

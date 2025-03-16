@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +12,19 @@ export const Navbar = () => {
   return (
     <nav className="w-full bg-[#7B2F6C] p-6">
       <div className="container mx-auto text-white">
-        <div className="flex items-center">
+        <div className="flex items-center justify-between">
+          {/* Logo on the left */}
+          <div className="flex items-center">
+            <Image
+              src="/images/logo/logo-petfest.png" // Update this path to your actual logo file
+              alt="Company Logo"
+              width={120}
+              height={40}
+              className="h-auto"
+            />
+          </div>
+          
+          {/* Navigation links for desktop */}
           <ul className="hidden md:flex justify-end md:ml-24 flex-grow text-center space-x-12 text-sm">
             <li>
               <a href="" className="">
@@ -74,8 +87,8 @@ export const Navbar = () => {
 
         {/* Mobile Menu */}
         <div className={`md:hidden ${isMenuOpen ? "block" : "hidden"} mt-4`}>
-          <ul className="flex flex-col justify-center items-cente space-y-4 text-sm">
-          <li>
+          <ul className="flex flex-col justify-center items-center space-y-4 text-sm">
+            <li>
               <a href="" className="">
                 HOME
               </a>
