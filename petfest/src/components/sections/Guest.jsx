@@ -20,7 +20,7 @@ const Guest = () => {
         {/* Header */}
         <div className="flex justify-center md:justify-center mb-10 md:mb-16 ">
           <div style={headerStyle}>
-            <h2 className="text-[#3F1508] font-Crunch-Chips text-xl md:text-2xl lg:text-3xl">
+            <h2 className="text-[#3F1508] font-crunch-chips text-xl md:text-2xl lg:text-3xl">
               GUEST STAR
             </h2>
           </div>
