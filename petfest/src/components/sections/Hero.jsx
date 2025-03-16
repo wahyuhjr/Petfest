@@ -72,7 +72,7 @@ const Hero = () => {
 
           {/* Tagline - Responsif text untuk mobile */}
           <h2
-            className="text-lg sm:text-xl md:text-3xl lg:text-5xl font-crunch-chips font-bold mt-4 sm:mt-6 text-yellow-300 text-center px-2 sm:px-4"
+            className="text-2xl sm:text-xl md:text-3xl lg:text-5xl font-crunch-chips font-bold mt-4 sm:mt-6 text-yellow-300 text-center px-2 sm:px-4"
             style={{
               WebkitTextStroke: isMobile ? "0.5px #3F1508" : "1px #3F1508",
               textShadow: isMobile ? "1px 1px 0 #3F1508" : "2px 2px 0 #3F1508",
@@ -87,7 +87,7 @@ const Hero = () => {
 
           {/* Event date and location - Ukuran font ditingkatkan pada mobile */}
           <h3
-            className="text-lg sm:text-xl md:text-3xl lg:text-5xl font-crunch-chips font-bold mt-3 sm:mt-4 text-white text-center"
+            className="text-2xl sm:text-xl md:text-3xl lg:text-5xl font-crunch-chips font-bold mt-3 sm:mt-4 text-white text-center"
             style={{
               WebkitTextStroke: isMobile ? "0.5px #3F1508" : "1px #3F1508",
               textShadow: isMobile ? "1px 1px 0 #3F1508" : "2px 2px 0 #3F1508",

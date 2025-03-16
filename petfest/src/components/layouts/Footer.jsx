@@ -35,7 +35,7 @@ const Footer = () => {
         <div className="w-full max-w-[200px] sm:max-w-[250px] md:max-w-[320px] lg:max-w-[400px] xl:max-w-[480px] 2xl:max-w-[550px] mb-8 sm:mb-10 md:mb-14">
           <div className="relative w-full aspect-[2/1]">
             <Image
-              src="/images/logo-bca.jpg"
+              src="/images/sponsor/logo-bca.jpg"
               fill
               style={{ objectFit: "contain" }}
               sizes="(max-width: 640px) 200px, (max-width: 768px) 250px, (max-width: 1024px) 320px, (max-width: 1280px) 400px, (max-width: 1536px) 480px, 550px"
