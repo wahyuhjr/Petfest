@@ -50,7 +50,7 @@ const Hero = () => {
         {/* Monkey swing */}
         <div className="absolute top-8 z-10 flex justify-center w-full">
           <Image
-            src="/motion/monkey-desktop.gif"
+            src="/motion/Monkey-desktop.gif"
             alt="Monkey swinging hero"
             width={500}
             height={500}
@@ -72,7 +72,7 @@ const Hero = () => {
 
           {/* Tagline - Responsif text untuk mobile */}
           <h2
-            className="text-lg sm:text-xl md:text-3xl lg:text-5xl font-crunch-chips font-bold mt-4 sm:mt-6 text-yellow-300 text-center px-2 sm:px-4"
+            className="text-lg sm:text-xl md:text-3xl lg:text-5xl font-Crunch-Chips font-bold mt-4 sm:mt-6 text-yellow-300 text-center px-2 sm:px-4"
             style={{
               WebkitTextStroke: isMobile ? "0.5px #3F1508" : "1px #3F1508",
               textShadow: isMobile ? "1px 1px 0 #3F1508" : "2px 2px 0 #3F1508",
@@ -87,7 +87,7 @@ const Hero = () => {
 
           {/* Event date and location - Ukuran font ditingkatkan pada mobile */}
           <h3
-            className="text-lg sm:text-xl md:text-3xl lg:text-5xl font-crunch-chips font-bold mt-3 sm:mt-4 text-white text-center"
+            className="text-lg sm:text-xl md:text-3xl lg:text-5xl font-Crunch-Chips font-bold mt-3 sm:mt-4 text-white text-center"
             style={{
               WebkitTextStroke: isMobile ? "0.5px #3F1508" : "1px #3F1508",
               textShadow: isMobile ? "1px 1px 0 #3F1508" : "2px 2px 0 #3F1508",
@@ -102,7 +102,7 @@ const Hero = () => {
         </div>
 
         {/* Ticket boxes - Pink boxes di bawah text ICE BSD */}
-        <div className="absolute bottom-[14%] lg:bottom-[25%] left-0 right-0 z-20 flex flex-col items-center space-y-3 sm:space-y-4 font-crunch-chips px-4 sm:px-6">
+        <div className="absolute bottom-[14%] lg:bottom-[25%] left-0 right-0 z-20 flex flex-col items-center space-y-3 sm:space-y-4 font-Crunch-Chips px-4 sm:px-6">
           {/* BCA Rp1 button */}
           <div
             className="bg-[#EC497F] rounded-3xl px-4 py-2 sm:px-5 sm:py-2 md:px-8 shadow-md max-w-[60%] sm:max-w-[250px] border-2 border-black"
@@ -120,7 +120,7 @@ const Hero = () => {
             </span>
             <div className="mt-1 text-center px-1">
               <Button
-                className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 font-crunch-chips border border-black"
+                className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 font-Crunch-Chips border border-black"
                 style={{
                   textShadow: "1px 1px 0 #3F1508",
                   boxShadow: "1px 1px 0 #000",
@@ -150,7 +150,7 @@ const Hero = () => {
               </span>
               <div className="mt-1 text-center px-1">
                 <Button
-                  className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 font-crunch-chips border border-black"
+                  className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 font-Crunch-Chips border border-black"
                   style={{
                     textShadow: "1px 1px 0 #3F1508",
                     boxShadow: "1px 1px 0 #000",
@@ -180,7 +180,7 @@ const Hero = () => {
               </span>
               <div className="mt-1 text-center px-1">
                 <Button
-                  className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 font-crunch-chips border border-black"
+                  className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 font-Crunch-Chips border border-black"
                   style={{
                     textShadow: "1px 1px 0 #3F1508",
                     boxShadow: "1px 1px 0 #000",

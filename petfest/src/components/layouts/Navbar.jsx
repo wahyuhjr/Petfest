@@ -16,7 +16,7 @@ export const Navbar = () => {
           {/* Logo on the left */}
           <div className="flex items-center">
             <Image
-              src="/images/logo/logo-petfest.png" // Update this path to your actual logo file
+              src="/images/logo/LOGO-PETFEST.png" // Update this path to your actual logo file
               alt="Company Logo"
               width={120}
               height={40}

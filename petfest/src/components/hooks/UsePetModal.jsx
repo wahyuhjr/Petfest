@@ -9,12 +9,12 @@ const usePetModal = () => {
   const [hasInteracted, setHasInteracted] = useState(false);
 
   const pets = [
-    { name: "CAT", image: "/images/survei-01.svg" },
-    { name: "DOG", image: "/images/survei-02.svg" },
-    { name: "AVIARY", image: "/images/survei-03.svg" },
-    { name: "FISH", image: "/images/survei-04.svg" },
-    { name: "SMALL ANIMAL", image: "/images/survei-05.svg" },
-    { name: "REPTILE", image: "/images/survei-06.svg" },
+    { name: "CAT", image: "/images/SURVEI-01.svg" },
+    { name: "DOG", image: "/images/SURVEI-02.svg" },
+    { name: "AVIARY", image: "/images/SURVEI-03.svg" },
+    { name: "FISH", image: "/images/SURVEI-04.svg" },
+    { name: "SMALL ANIMAL", image: "/images/SURVEI-05.svg" },
+    { name: "REPTILE", image: "/images/SURVEI-06.svg" },
   ];
 
   // Cek apakah pengguna pernah berinteraksi sebelumnya
@@ -98,12 +98,10 @@ const usePetModal = () => {
             </span>
           </button>
 
-        123
-
           {/* Title */}
           <div className="flex justify-center">
             <Image
-              src="/images/survei-07.svg"
+              src="/images/SURVEI-07.svg"
               alt="USS Logo"
               width={isMobile ? 120 : 160}
               height={isMobile ? 40 : 50}
@@ -118,7 +116,7 @@ const usePetModal = () => {
               <div key={index} className="flex flex-col items-center">
                 <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 flex items-center justify-center overflow-hidden">
                   {/* Menggunakan gambar dari array pets daripada emoji */}
-                  <div className="relative w-20 h-20 sm:w-14 sm:h-14 md:w-48 md:h-48 font-crunch-chips">
+                  <div className="relative w-20 h-20 sm:w-14 sm:h-14 md:w-48 md:h-48 font-Crunch-Chips">
                     <Image
                       src={pet.image}
                       alt={pet.name}
@@ -129,10 +127,10 @@ const usePetModal = () => {
                   </div>
                 </div>
                 <p
-                  className="text-white font-bold text-xs sm:text-sm md:text-xl my-1 sm:my-2 font-crunch-chips"
+                  className="text-white font-bold text-xs sm:text-sm md:text-xl my-1 sm:my-2 font-Crunch-Chips"
                   style={{
                     textShadow: "1px 1px 0 #3F1508",
-                  }} 
+                  }}
                 >
                   {pet.name}
                 </p>
