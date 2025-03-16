@@ -69,7 +69,7 @@ const GuestStar = () => {
       </div>
 
       {/* Content container with better responsive positioning */}
-      <div className="absolute md:-inset-50 z-10 container mx-auto px-4 sm:px-6 md:px-8 h-full flex flex-col items-center justify-center">
+      <div className="mt-5 sm:mt-15 md:mt-15 lg:mt-0 absolute md:-inset-50 z-10 container mx-auto px-4 sm:px-6 md:px-8 h-full flex flex-col items-center justify-center">
         <div className=" md:max-w-[800px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1400px]">
           {/* Circular guest photo with name */}
           <div className="relative mb-8">
@@ -85,12 +85,12 @@ const GuestStar = () => {
 
             {/* Name tag below photo */}
             <div className="mt-4 py-2 max-w-sm mx-auto" style={headerStyle}>
-              <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
+              <h2 className="text-[#3F1508] font-crunch-chips text-xl md:text-4xl lg:text-4xl text-center">
                 JACKSON GALAXY
               </h2>
             </div>
             <div className="text-center">
-              <p className="text-[#3F1508] text-4xl font-bold font-miso pt-2">
+              <p className="text-[#3F1508] text-2xl sm:text-4xl font-bold font-miso pt-2">
                 (CAT BEHAVIORIST)
               </p>
             </div>
