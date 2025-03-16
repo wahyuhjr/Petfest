@@ -30,11 +30,11 @@ const About = () => {
         <div className="relative mx-6 md:px-8 lg:px-12">
           {/* Text content - limited width to make space for image */}
           <div className="w-full md:w-3/5 lg:w-2/3 text-white">
-            <p className="text-4xl sm:text-5xl lg:text-4xl xl:text-5xl font-medium mb-8 font-miso leading-tight">
+            <p className="text-xl sm:text-2xl lg:text-4xl xl:text-5xl font-medium mb-8 font-miso leading-tight">
               PETFEST INDONESIA is an exciting event designed to bring together
               cat & dog lovers, owners, and business in the pet industry.
             </p>
-            <p className="text-4xl sm:text-5xl lg:text-4xl xl:text-5xl font-medium font-miso leading-tight">
+            <p className="text-xl sm:text-2xl lg:text-4xl xl:text-5xl font-medium font-miso leading-tight">
               We aim to provide a dynamic platform for exhibitors to showcase
               their products and services, while also offering a fun-filled
               experience for attendees.
