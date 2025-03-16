@@ -51,7 +51,7 @@ const Guest = () => {
         
         <div className="absolute bottom-0 -top-12 left-0 z-10 hidden md:block">
           <Image
-            src="/motion/tupai.gif"
+            src="/motion/Tupai.gif"
             width={700}
             height={700}
             alt="Red parrot"
