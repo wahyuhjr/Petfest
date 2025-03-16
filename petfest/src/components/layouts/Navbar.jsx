@@ -28,7 +28,7 @@ export const Navbar = () => {
           <ul className="hidden md:flex justify-end md:ml-24 flex-grow text-center space-x-12 text-sm">
             <li>
               <a href="" className="">
-                HOME
+                HOME 
               </a>
             </li>
             <li>
