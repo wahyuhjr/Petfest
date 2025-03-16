@@ -34,21 +34,18 @@ const Hero = () => {
     <section className="w-full min-h-screen flex overflow-hidden relative">
       <div className="relative w-full h-auto">
         {/* Header dengan ICE logo */}
-        {/* <div className="absolute top-[8%] left-0 right-0 z-20 flex justify-center">
-          <div className="bg-white px-4 py-1 rounded-full flex items-center">
-            <span className="text-sm font-bold">
-              <span className="text-red-600">1</span>
-              <span className="bg-red-600 text-white px-1">C</span>
-              <span className="text-black">E</span>
-            </span>
-            <span className="text-[8px] sm:text-xs mx-1 font-medium text-gray-700">
-              International
-              <br />
-              Creative Events
-            </span>
-            <span className="mx-1 px-1 font-bold">USS •</span>
+        <div className="absolute top-[3%] sm:top-[5%] md:top-[8%] left-0 right-0 z-20 flex justify-center px-4 sm:px-0">
+          <div className="rounded-full flex items-center justify-center">
+            <Image
+              src="/images/logo-uss.svg"
+              alt="USS Logo"
+              width={isMobile ? 120 : 160}
+              height={isMobile ? 40 : 50}
+              className="w-[160px] sm:w-[180px] md:w-[500px] h-auto object-contain"
+              priority
+            />
           </div>
-        </div> */}
+        </div>
 
         {/* Monkey swing */}
         <div className="absolute top-8 z-10 flex justify-center w-full">
@@ -63,7 +60,7 @@ const Hero = () => {
         {/* Monkey swing */}
 
         {/* Logo PETFEST */}
-        <div className="absolute top-[15%] sm:top-[18%] md:top-[20%] left-0 right-0 z-20 flex flex-col items-center px-4 sm:px-8">
+        <div className="absolute top-[7%] sm:top-[18%] md:top-[20%] left-0 right-0 z-20 flex flex-col items-center px-4 sm:px-8">
           <Image
             src="/motion/logo-petfest.gif"
             alt="PetFest Logo"
@@ -105,10 +102,10 @@ const Hero = () => {
         </div>
 
         {/* Ticket boxes - Pink boxes di bawah text ICE BSD */}
-        <div className="absolute bottom-44 sm:bottom-16 lg:bottom-25 left-0 right-0 z-20 flex flex-col items-center space-y-3 sm:space-y-4 font-crunch-chips px-4 sm:px-6">
+        <div className="absolute bottom-[14%] lg:bottom-[25%] left-0 right-0 z-20 flex flex-col items-center space-y-3 sm:space-y-4 font-crunch-chips px-4 sm:px-6">
           {/* BCA Rp1 button */}
           <div
-            className="bg-[#EC497F] rounded-lg px-4 py-2 sm:px-5 sm:py-2 md:px-8 shadow-md max-w-[200px] sm:max-w-[250px] border-2 border-black"
+            className="bg-[#EC497F] rounded-3xl px-4 py-2 sm:px-5 sm:py-2 md:px-8 shadow-md max-w-[60%] sm:max-w-[250px] border-2 border-black"
             style={{
               boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
             }}
@@ -135,22 +132,21 @@ const Hero = () => {
           </div>
 
           {/* Ticket options in a row */}
-          <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-3 md:space-x-4 w-full max-w-[90%] sm:max-w-[85%] md:max-w-[80%]">
+          <div className="flex flex-col sm:flex-row md:gap-6 justify-center space-y-3 sm:space-y-0 sm:space-x-3 w-full max-w-[90%] sm:max-w-[85%] md:max-w-[65%]">
             {/* General admission */}
             <div
-              className="bg-[#EC497F] rounded-lg px-4 py-2 sm:px-5 sm:py-2 md:px-8 shadow-md w-full sm:w-1/2 border-2 border-black"
+              className="bg-[#EC497F] rounded-3xl max-w-3/4 mx-auto lg:px-4 py-2 sm:px-5 sm:py-2 shadow-md w-full sm:w-1/2 border-2 border-black"
               style={{
                 boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
               }}
             >
               <span
-                className="text-lg sm:text-xl md:text-3xl font-bold text-white block text-center"
+                className="text-lg sm:text-xl md:text-3xl font-bold text-white block text-center items-center md:mt-5"
                 style={{
                   textShadow: "2px 2px 0 #3F1508",
                 }}
               >
-                GENERAL
-                <br /> ADMISSION
+                GENERAL ADMISSION
               </span>
               <div className="mt-1 text-center px-1">
                 <Button
@@ -167,7 +163,7 @@ const Hero = () => {
 
             {/* Private session */}
             <div
-              className="bg-[#EC497F] rounded-lg px-4 py-2 sm:px-5 sm:py-2 md:px-8 shadow-md w-full sm:w-1/2 border-2 border-black"
+              className="bg-[#EC497F] rounded-3xl max-w-3/4 mx-auto px-2 lg:px-4 py-2 sm:px-5 sm:py-2 md:px-8 shadow-md w-full sm:w-1/2 border-2 border-black"
               style={{
                 boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
               }}

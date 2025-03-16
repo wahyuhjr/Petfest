@@ -43,7 +43,7 @@ const GuestStar = () => {
 
         <div className="w-full relative">
           <Image
-            src="/images/bg-guest-star.jpg"
+            src="/images/bg-guest-star-3.jpg"
             alt="Jungle background with brick wall"
             width={0}
             height={0}
@@ -56,6 +56,43 @@ const GuestStar = () => {
             }}
           />
         </div>
+      </div>
+
+      {/* Brick fence/wall added at the bottom of the screen */}
+      <div className="absolute bottom-0 left-0 right-0 z-20">
+        <Image
+          src="/images/pager.svg"
+          alt="Brick fence"
+          width={0}
+          height={0}
+          sizes="100vw"
+          className="w-full h-auto object-cover"
+          style={{
+            maxHeight: "1000px",
+          }}
+        />
+      </div>
+
+      <div className="absolute lg:bottom-[13%] bottom-[5%] -right-[30%] md:-right-[7%] z-10 w-[250px] h-[250px] sm:w-36 sm:h-36 md:w-[650px] md:h-[600px]">
+        <Image
+          src="/motion/cat-orange.gif"
+          alt="Cat"
+          fill
+          sizes="(max-width: 640px) 96px, (max-width: 768px) 144px, 250px"
+          className="object-contain"
+          priority
+        />
+      </div>
+      
+      <div className="absolute lg:bottom-[10%] bottom-[0%] -left-[20%] md:-left-[13%] z-10 w-[250px] h-[250px] sm:w-36 sm:h-36 md:w-[650px] md:h-[600px]">
+        <Image
+          src="/images/dog-pink.svg"
+          alt="Dog"
+          fill
+          sizes="(max-width: 640px) 96px, (max-width: 768px) 144px, 250px"
+          className="object-contain"
+          priority
+        />
       </div>
 
       <div className="absolute top-8 z-10">
