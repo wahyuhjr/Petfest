@@ -14,18 +14,18 @@ const headerStyle = {
 
 const Brand = () => {
   const brands = [
-    { id: 1, name: "Blackwood", src: "/images/brand/brand-logo-01.png" },
-    { id: 2, name: "Dog Appétit", src: "/images/brand/brand-logo-02.png" },
-    { id: 3, name: "Boss Cat", src: "/images/brand/brand-logo-03.png" },
-    { id: 4, name: "Frost", src: "/images/brand/brand-logo-04.png" },
-    { id: 5, name: "Gem Kitty", src: "/images/brand/brand-logo-05.png" },
-    { id: 6, name: "Petto", src: "/images/brand/brand-logo-06.png" },
-    { id: 7, name: "Grain Link", src: "/images/brand/brand-logo-07.png" },
-    { id: 8, name: "Marmutops", src: "/images/brand/brand-logo-08.png" },
-    { id: 9, name: "MS", src: "/images/brand/brand-logo-09.png" },
-    { id: 10, name: "Petopia", src: "/images/brand/brand-logo-10.png" },
-    { id: 11, name: "Super Sol", src: "/images/brand/brand-logo-11.png" },
-    { id: 12, name: "Susu Ellis", src: "/images/brand/brand-logo-12.png" },
+    { id: 1, name: "Blackwood", src: "/images/brand/BRAND-LOGO-01.png" },
+    { id: 2, name: "Dog Appétit", src: "/images/brand/BRAND-LOGO-02.png" },
+    { id: 3, name: "Boss Cat", src: "/images/brand/BRAND-LOGO-03.png" },
+    { id: 4, name: "Frost", src: "/images/brand/BRAND-LOGO-04.png" },
+    { id: 5, name: "Gem Kitty", src: "/images/brand/BRAND-LOGO-05.png" },
+    { id: 6, name: "Petto", src: "/images/brand/BRAND-LOGO-06.png" },
+    { id: 7, name: "Grain Link", src: "/images/brand/BRAND-LOGO-07.png" },
+    { id: 8, name: "Marmutops", src: "/images/brand/BRAND-LOGO-08.png" },
+    { id: 9, name: "MS", src: "/images/brand/BRAND-LOGO-09.png" },
+    { id: 10, name: "Petopia", src: "/images/brand/BRAND-LOGO-10.png" },
+    { id: 11, name: "Super Sol", src: "/images/brand/BRAND-LOGO-11.png" },
+    { id: 12, name: "Susu Ellis", src: "/images/brand/BRAND-LOGO-12.png" },
   ];
 
   return (
@@ -110,7 +110,7 @@ const Brand = () => {
         {/* AND MANY MORE Footer */}
         <div className="w-full flex justify-center mt-10 md:mt-12">
           <div className="bg-transparent rounded-full border-2 border-white px-6 py-2">
-            <h2 className="text-white font-bold text-lg md:text-xl font-crunch-chips">
+            <h2 className="text-white font-bold text-lg md:text-xl font-Crunch-Chips">
               AND MANY MORE
             </h2>
           </div>

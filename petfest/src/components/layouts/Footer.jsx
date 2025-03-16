@@ -19,14 +19,14 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 lg:pt-10 xl:pt-12 flex-grow flex flex-col items-center">
         {/* SPONSORED */}
         <div className="mb-3 sm:mb-4 md:mb-5 lg:mb-6" style={headerStyle}>
-            <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
+            <h2 className="text-[#3F1508] font-Crunch-Chips text-2xl md:text-4xl lg:text-4xl text-center">
               SPONSORED
             </h2>
         </div>
 
         {/* OFFICIAL BANK PARTNER */}
         <div className="mb-3 sm:mb-4 md:mb-5 lg:mb-6" style={headerStyle}>
-            <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
+            <h2 className="text-[#3F1508] font-Crunch-Chips text-2xl md:text-4xl lg:text-4xl text-center">
               OFFICIAL BANK PARTNER
             </h2>
         </div>
@@ -47,7 +47,7 @@ const Footer = () => {
 
         {/* SUPPORTED BY */}
         <div className="mb-3 sm:mb-4 md:mb-16 lg:mb-16" style={headerStyle}>
-            <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
+            <h2 className="text-[#3F1508] font-Crunch-Chips text-2xl md:text-4xl lg:text-4xl text-center">
               SUPPORT BY
             </h2>
         </div>
