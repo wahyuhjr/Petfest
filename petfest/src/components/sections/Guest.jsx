@@ -61,7 +61,7 @@ const Guest = () => {
 
         <div className="absolute bottom-0 top-10 left-0 z-10 sm:hidden">
           <Image
-            src="/motion/tupai.gif"
+            src="/motion/Tupai.gif"
             width={100}
             height={100}
             alt="Tupai"
@@ -75,7 +75,7 @@ const Guest = () => {
             width={60}
             height={90}
             alt="Yellow plant"
-            className="w-full h-full object-contain"
+            className="w-full h-[300px] object-contain"
           />
         </div>
         

@@ -19,14 +19,14 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 lg:pt-10 xl:pt-12 flex-grow flex flex-col items-center">
         {/* SPONSORED */}
         <div className="mb-3 sm:mb-4 md:mb-5 lg:mb-6" style={headerStyle}>
-            <h2 className="text-[#3F1508] font-Crunch-Chips text-2xl md:text-4xl lg:text-4xl text-center">
+            <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
               SPONSORED
             </h2>
         </div>
 
         {/* OFFICIAL BANK PARTNER */}
         <div className="mb-3 sm:mb-4 md:mb-5 lg:mb-6" style={headerStyle}>
-            <h2 className="text-[#3F1508] font-Crunch-Chips text-2xl md:text-4xl lg:text-4xl text-center">
+            <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
               OFFICIAL BANK PARTNER
             </h2>
         </div>
@@ -35,7 +35,7 @@ const Footer = () => {
         <div className="w-full max-w-[200px] sm:max-w-[250px] md:max-w-[320px] lg:max-w-[400px] xl:max-w-[480px] 2xl:max-w-[550px] mb-8 sm:mb-10 md:mb-14">
           <div className="relative w-full aspect-[2/1]">
             <Image
-              src="/images/logo-bca.png"
+              src="/images/logo-bca.jpg"
               fill
               style={{ objectFit: "contain" }}
               sizes="(max-width: 640px) 200px, (max-width: 768px) 250px, (max-width: 1024px) 320px, (max-width: 1280px) 400px, (max-width: 1536px) 480px, 550px"
@@ -47,7 +47,7 @@ const Footer = () => {
 
         {/* SUPPORTED BY */}
         <div className="mb-3 sm:mb-4 md:mb-16 lg:mb-16" style={headerStyle}>
-            <h2 className="text-[#3F1508] font-Crunch-Chips text-2xl md:text-4xl lg:text-4xl text-center">
+            <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
               SUPPORT BY
             </h2>
         </div>
@@ -57,7 +57,7 @@ const Footer = () => {
           {/* Bluebird Logo */}
           <div className="relative w-[120px] sm:w-[150px] md:w-[180px] lg:w-[220px] xl:w-[250px] 2xl:w-[280px] aspect-[3/2]">
             <Image
-              src="/images/logo-bluebird.png"
+              src="/images/sponsor/logo-bluebird.jpg"
               fill
               style={{ objectFit: "contain" }}
               sizes="(max-width: 640px) 120px, (max-width: 768px) 150px, (max-width: 1024px) 180px, (max-width: 1280px) 220px, (max-width: 1536px) 250px, 280px"
@@ -68,7 +68,7 @@ const Footer = () => {
           {/* Hotel Tentrem Logo */}
           <div className="relative w-[120px] sm:w-[150px] md:w-[180px] lg:w-[220px] xl:w-[250px] 2xl:w-[280px] aspect-[3/2]">
             <Image
-              src="/images/logo-htj.png"
+              src="/images/sponsor/logo-htj.jpg"
               fill
               style={{ objectFit: "contain" }}
               sizes="(max-width: 640px) 120px, (max-width: 768px) 150px, (max-width: 1024px) 180px, (max-width: 1280px) 220px, (max-width: 1536px) 250px, 280px"
@@ -79,7 +79,7 @@ const Footer = () => {
           {/* Aqua Logo */}
           <div className="relative w-[120px] sm:w-[150px] md:w-[180px] lg:w-[220px] xl:w-[250px] 2xl:w-[280px] aspect-[3/2]">
             <Image
-              src="/images/logo-aqua.png"
+              src="/images/sponsor/logo-aqua.jpg"
               fill
               style={{ objectFit: "contain" }}
               sizes="(max-width: 640px) 120px, (max-width: 768px) 150px, (max-width: 1024px) 180px, (max-width: 1280px) 220px, (max-width: 1536px) 250px, 280px"
