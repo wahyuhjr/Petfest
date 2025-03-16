@@ -101,6 +101,17 @@ const usePetModal = () => {
           {/* Title */}
           <div className="flex justify-center">
             <Image
+              src="/images/logo-uss.svg"
+              alt="USS Logo"
+              width={isMobile ? 120 : 160}
+              height={isMobile ? 40 : 50}
+              className="w-[160px] sm:w-[180px] md:w-[450px] h-auto object-contain"
+              priority
+            />
+          </div>
+
+          <div className="flex justify-center pt-3">
+            <Image
               src="/images/SURVEI-07.svg"
               alt="USS Logo"
               width={isMobile ? 120 : 160}
@@ -111,7 +122,7 @@ const usePetModal = () => {
           </div>
 
           {/* Pet Grid - 2 columns on mobile, 3 on larger screens */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4 md:gap-6 pt-3">
             {pets.map((pet, index) => (
               <div key={index} className="flex flex-col items-center">
                 <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 flex items-center justify-center overflow-hidden">
