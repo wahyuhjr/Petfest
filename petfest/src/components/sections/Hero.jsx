@@ -51,7 +51,7 @@ const Hero = () => {
         <div className="absolute top-8 z-10 flex justify-center w-full">
           <Image
             src="/motion/monkey-desktop.gif"
-            alt="Decorative vine"
+            alt="Monkey swinging hero"
             width={500}
             height={500}
             className="mx-auto w-[500px] h-[500px] md:w-[1000px] md:h-[1000px]"

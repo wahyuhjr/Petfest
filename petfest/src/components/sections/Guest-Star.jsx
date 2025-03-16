@@ -98,7 +98,7 @@ const GuestStar = () => {
       <div className="absolute top-8 z-10">
         <Image
           src="/motion/monkey-desktop.gif"
-          alt="Decorative vine"
+          alt="Monkey-swinging-guest"
           width={500}
           height={500}
           className="mx-auto w-[500px] h-[500px] md:w-[1500px] md:h-[1500px]"
