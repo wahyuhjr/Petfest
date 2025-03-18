@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "0e8483a7-5bdc-4bff-a6b2-21c560873d1a",
+		"name": "PetfFest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38019140"
+	},
+	"item": [
+		{
+			"name": "Click",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/api/animals/click/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"animals",
+						"click",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Click",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/api/animals/click/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"animals",
+								"click",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "vary",
+							"value": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Mar 2025 05:02:23 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Lion\",\n        \"imageUrl\": \"https://placehold.co/400x400/f39c12/FFFFFF.png?text=Lion\",\n        \"clickCount\": 56,\n        \"createdAt\": \"2025-03-10T19:10:12.052Z\",\n        \"updatedAt\": \"2025-03-11T05:02:23.117Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/api/data/all",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"data",
+						"all"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Data",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/api/data/all",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"data",
+								"all"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "vary",
+							"value": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Mar 2025 04:57:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": {\n        \"animals\": [\n            {\n                \"id\": 1,\n                \"name\": \"Lion\",\n                \"imageUrl\": \"https://placehold.co/400x400/f39c12/FFFFFF.png?text=Lion\",\n                \"clickCount\": 54,\n                \"createdAt\": \"2025-03-10T19:10:12.052Z\",\n                \"updatedAt\": \"2025-03-10T19:10:12.052Z\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"Tiger\",\n                \"imageUrl\": \"https://placehold.co/400x400/e74c3c/FFFFFF.png?text=Tiger\",\n                \"clickCount\": 4,\n                \"createdAt\": \"2025-03-10T19:10:12.064Z\",\n                \"updatedAt\": \"2025-03-10T19:10:12.064Z\"\n            }\n        ],\n        \"brands\": [\n            {\n                \"id\": 1,\n                \"name\": \"blackwood\",\n                \"logoUrl\": \"/uploads/brands/brand-4cc624f5-8550-4483-a794-d03b9ada8c60.png\",\n                \"websiteUrl\": \"https://blackwoodpetfood.com/\",\n                \"createdAt\": \"2025-03-10T19:37:37.566Z\",\n                \"updatedAt\": \"2025-03-10T19:37:49.305Z\"\n            }\n        ],\n        \"seo\": {\n            \"global\": {\n                \"id\": 1,\n                \"pageType\": \"global\",\n                \"entityId\": null,\n                \"title\": \"Test\",\n                \"description\": \"Test\",\n                \"keywords\": \"Test\",\n                \"ogTitle\": \"Test\",\n                \"ogDescription\": \"Test\",\n                \"ogImage\": \"Test\",\n                \"canonical\": \"Test\",\n                \"structuredData\": null,\n                \"createdAt\": \"2025-03-11T04:45:46.325Z\",\n                \"updatedAt\": \"2025-03-11T04:45:46.325Z\"\n            },\n            \"home\": null,\n            \"animals\": [],\n            \"brands\": []\n        }\n    }\n}"
+				}
+			]
+		}
+	]
+}
