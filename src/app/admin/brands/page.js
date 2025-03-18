@@ -335,14 +335,14 @@ export default function BrandsPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {brand.websiteUrl ? (
-                        <a 
+                        <Link
                           href={brand.websiteUrl} 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="text-sm text-blue-500 hover:underline"
                         >
                           {brand.websiteUrl}
-                        </a>
+                        </Link>
                       ) : (
                         <span className="text-sm text-gray-400">No website</span>
                       )}
