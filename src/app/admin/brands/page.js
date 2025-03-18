@@ -224,6 +224,8 @@ export default function BrandsPage() {
                 <div className="relative h-48 w-48 border border-black rounded-md overflow-hidden">
                   <Image
                     src={logoPreview}
+                    width={200}
+                    height={200}
                     alt="Preview"
                     className="h-full w-full object-contain p-2"
                   />
@@ -330,6 +332,8 @@ export default function BrandsPage() {
             >
               <div className="h-48 w-full relative flex items-center justify-center p-4 bg-gray-50">
                 <Image
+                  width={100}
+                  height={100}
                   src={brand.logoUrl}
                   alt={brand.name}
                   className="max-h-full max-w-full object-contain"
@@ -415,6 +419,8 @@ export default function BrandsPage() {
                       <Image
                         src={brand.logoUrl}
                         alt={brand.name}
+                        width={64}
+                        height={64}
                         className="max-h-full max-w-full object-contain"
                       />
                     </div>

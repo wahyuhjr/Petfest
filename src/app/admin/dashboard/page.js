@@ -126,6 +126,8 @@ export default function DashboardPage() {
                 <Image 
                   src={animal.imageUrl} 
                   alt={animal.name} 
+                  width={40}
+                  height={40}
                   className="w-full h-full object-contain bg-gray-50"
                 />
               </div>
