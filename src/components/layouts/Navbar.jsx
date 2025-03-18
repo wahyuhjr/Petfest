@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,39 +28,39 @@ export const Navbar = () => {
           {/* Navigation links for desktop */}
           <ul className="hidden md:flex justify-end md:ml-24 flex-grow text-center space-x-12 text-sm">
             <li>
-              <a href="" className="">
+              <Link href="" className="">
                 HOME 
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="" className="">
+              <Link href="" className="">
                 ABOUT US
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="" className="">
+              <Link href="" className="">
                 SPECIAL GUEST
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="" className="">
+              <Link href="" className="">
                 BRAND
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="" className="">
+              <Link href="" className="">
                 RUNDOWN
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="" className="">
+              <Link href="" className="">
                 LAYOUT
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="" className="">
+              <Link href="" className="">
                 FAQ
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -89,39 +90,39 @@ export const Navbar = () => {
         <div className={`md:hidden ${isMenuOpen ? "block" : "hidden"} mt-4`}>
           <ul className="flex flex-col justify-center items-center space-y-4 text-sm">
             <li>
-              <a href="" className="">
+              <Link href="" className="">
                 HOME
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="" className="">
+              <Link href="" className="">
                 ABOUT US
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="" className="">
+              <Link href="" className="">
                 SPECIAL GUEST
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="" className="">
+              <Link href="" className="">
                 BRAND
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="" className="">
+              <Link href="" className="">
                 RUNDOWN
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="" className="">
+              <Link href="" className="">
                 LAYOUT
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="" className="">
+              <Link href="" className="">
                 FAQ
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 
 export default function BrandsPage() {
   const [brands, setBrands] = useState([]);
@@ -281,14 +282,14 @@ export default function BrandsPage() {
                 <div className="p-4">
                   <h3 className="text-lg font-semibold text-black">{brand.name}</h3>
                   {brand.websiteUrl && (
-                    <a 
+                    <Link 
                       href={brand.websiteUrl} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-sm text-blue-500 hover:underline mt-1 block truncate"
                     >
                       {brand.websiteUrl}
-                    </a>
+                    </Link>
                   )}
                   <div className="mt-4 flex justify-between">
                     <button
