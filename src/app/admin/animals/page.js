@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
+import Image from 'next/image';
 
 export default function AnimalsPage() {
   const [animals, setAnimals] = useState([]);
@@ -189,7 +190,7 @@ export default function AnimalsPage() {
             <div className="flex items-center justify-center">
               {imagePreview ? (
                 <div className="relative h-48 w-48 border rounded-md overflow-hidden">
-                  <img 
+                  <Image 
                     src={imagePreview} 
                     alt="Preview" 
                     className="h-full w-full object-contain bg-gray-50" // Changed from object-cover to object-contain
@@ -255,7 +256,7 @@ export default function AnimalsPage() {
             {animals.map(animal => (
               <div key={animal.id} className="bg-white rounded-lg shadow-md overflow-hidden">
                 <div className="h-48 w-full relative">
-                  <img 
+                  <Image 
                     src={animal.imageUrl} 
                     alt={animal.name} 
                     className="h-full w-full object-contain bg-gray-50" // Changed from object-cover to object-contain
@@ -305,7 +306,7 @@ export default function AnimalsPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="h-16 w-24 overflow-hidden rounded-md"> {/* Changed from rounded-full to rounded-md and adjusted dimensions */}
-                        <img src={animal.imageUrl} alt={animal.name} className="h-full w-full object-contain bg-gray-50" /> {/* Changed from object-cover to object-contain */}
+                        <Image src={animal.imageUrl} alt={animal.name} className="h-full w-full object-contain bg-gray-50" /> {/* Changed from object-cover to object-contain */}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

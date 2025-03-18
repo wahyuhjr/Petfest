@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import Image from "next/image";
 
 export default function AnimalDetailsPage({ params }) {
   const router = useRouter();
@@ -95,7 +96,7 @@ export default function AnimalDetailsPage({ params }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <div className="rounded-lg overflow-hidden border">
-              <img
+              <Image
                 src={animal.imageUrl}
                 alt={animal.name}
                 className="w-full h-auto object-cover"

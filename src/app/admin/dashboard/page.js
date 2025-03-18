@@ -6,6 +6,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
   PieChart, Pie, Cell, LineChart, Line, AreaChart, Area
 } from 'recharts';
+import Image from 'next/image';
 
 export default function DashboardPage() {
   // State management
@@ -122,7 +123,7 @@ export default function DashboardPage() {
           <div className="flex items-center gap-2 mb-2">
             {animal?.imageUrl && (
               <div className="w-10 h-10 overflow-hidden rounded-full border">
-                <img 
+                <Image 
                   src={animal.imageUrl} 
                   alt={animal.name} 
                   className="w-full h-full object-contain bg-gray-50"
@@ -482,7 +483,7 @@ export default function DashboardPage() {
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
                       <div className="flex-shrink-0 h-10 w-10">
-                        <img 
+                        <Image 
                           className="h-10 w-10 rounded-full object-contain bg-gray-100" 
                           src={animal.image} 
                           alt={animal.name} 
