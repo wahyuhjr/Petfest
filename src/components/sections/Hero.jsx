@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import usePetModal from "../hooks/UsePetModal";
 import { Button } from "../ui/button";
-import Link from "next/link";
+import Link from "next/link"; 
 
 const Hero = () => {
   const [windowWidth, setWindowWidth] = useState(0);
