@@ -19,16 +19,16 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 lg:pt-10 xl:pt-12 flex-grow flex flex-col items-center">
         {/* SPONSORED */}
         <div className="mb-3 sm:mb-4 md:mb-5 lg:mb-6" style={headerStyle}>
-            <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
-              SPONSORED
-            </h2>
+          <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
+            SPONSORED
+          </h2>
         </div>
 
         {/* OFFICIAL BANK PARTNER */}
         <div className="mb-3 sm:mb-4 md:mb-5 lg:mb-6" style={headerStyle}>
-            <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
-              OFFICIAL BANK PARTNER
-            </h2>
+          <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
+            OFFICIAL BANK PARTNER
+          </h2>
         </div>
 
         {/* BCA Logo - Responsive sizes for all devices */}
@@ -47,13 +47,13 @@ const Footer = () => {
 
         {/* SUPPORTED BY */}
         <div className="mb-3 sm:mb-4 md:mb-16 lg:mb-16" style={headerStyle}>
-            <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
-              SUPPORT BY
-            </h2>
+          <h2 className="text-[#3F1508] font-crunch-chips text-2xl md:text-4xl lg:text-4xl text-center">
+            SUPPORT BY
+          </h2>
         </div>
 
         {/* Support logos - Responsive for all screen sizes */}
-        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-24 2xl:gap-32 w-full max-w-7xl mb-8 sm:mb-10 md:mb-14 lg:mb-20 xl:mb-24">
+        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-24 2xl:gap-32 w-full max-w-7xl mt-20 sm:mb-10 md:mb-14 lg:mb-20 xl:mb-24">
           {/* Bluebird Logo */}
           <div className="relative w-[120px] sm:w-[150px] md:w-[180px] lg:w-[220px] xl:w-[250px] 2xl:w-[280px] aspect-[3/2]">
             <Image
@@ -89,13 +89,25 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Kucing di pojok kiri bawah - absolute positioning */}
+      <div className="absolute left-0 bottom-0 z-10 w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] md:w-[200px] md:h-[200px] lg:w-[400px] lg:h-[400px]">
+        <Image
+          src="/motion/kucing-abu-2.gif"
+          alt="Cat"
+          fill
+          sizes="(max-width: 640px) 120px, (max-width: 768px) 150px, (max-width: 1024px) 200px, 250px"
+          className="object-contain object-left-bottom"
+          priority
+        />
+      </div>
+
       {/* Footer image optimized for MacBooks to prevent cropping */}
       <div className="w-full left-0 right-0 bottom-0 mt-auto overflow-hidden">
         {/* Desktop/MacBook specific version with controlled aspect ratio */}
         <div className="hidden lg:block relative w-full">
           <div className="relative w-full" style={{ paddingBottom: "28%" }}>
             <Image
-              src="/images/bg-footer3.jpg"
+              src="/images/bg-footer-4.jpg"
               fill
               style={{
                 objectFit: "contain", // Changed to contain to prevent cropping
@@ -110,7 +122,7 @@ const Footer = () => {
         {/* Mobile and tablet version (unchanged) */}
         <div className="lg:hidden relative w-full h-[150px] sm:h-[200px] md:h-[280px]">
           <Image
-            src="/images/bg-footer3.jpg"
+            src="/images/bg-footer-4.jpg"
             fill
             style={{
               objectFit: "cover",

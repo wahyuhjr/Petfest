@@ -4,8 +4,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import usePetModal from "../hooks/UsePetModal";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
-const Hero = ({ animals, onAnimalClick }) => {
+const Hero = () => {
   const [windowWidth, setWindowWidth] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const { PetModalComponent, autoShowModalAfter, selectedPet } = usePetModal();
@@ -34,9 +35,6 @@ const Hero = ({ animals, onAnimalClick }) => {
   useEffect(() => {
     if (selectedPet) {
       console.log(`User selected ${selectedPet} as their favorite pet type`);
-
-      // You can now customize the UI based on pet preference
-      // For example, change background images, content, etc.
     }
   }, [selectedPet]);
 
@@ -69,7 +67,7 @@ const Hero = ({ animals, onAnimalClick }) => {
 
       <div className="relative w-full h-auto">
         {/* Header with ICE logo */}
-        <div className="absolute top-[3%] sm:top-[5%] md:top-[8%] left-0 right-0 z-20 flex justify-center px-4 sm:px-0">
+        <div className="absolute top-[3%] sm:top-[5%] md:top-[4%] left-0 right-0 z-20 flex justify-center px-4 sm:px-0">
           <div className="rounded-full flex items-center justify-center">
             <Image
               src="/images/logo-uss.svg"
@@ -102,7 +100,7 @@ const Hero = ({ animals, onAnimalClick }) => {
         </div>
 
         {/* Logo PETFEST - posisi mobile lebih rendah */}
-        <div className="absolute top-[10%] sm:top-[15%] md:top-[17%] left-0 right-0 z-20 flex flex-col items-center px-4 sm:px-8">
+        <div className="absolute top-[10%] sm:top-[15%] md:top-[10%] left-0 right-0 z-20 flex flex-col items-center px-4 sm:px-8">
           <Image
             src="/motion/logo-petfest.gif"
             alt="PetFest Logo"
@@ -143,140 +141,132 @@ const Hero = ({ animals, onAnimalClick }) => {
           </h3>
         </div>
 
-        {/* Ticket boxes - 2 columns dengan gap yang diperlebar dan posisi lebih rendah */}
-        <div className="absolute bottom-[2%] sm:bottom-[3%] md:bottom-[5%] lg:bottom-[12%] left-0 right-0 z-20 flex flex-col items-center space-y-4 sm:space-y-5 font-crunch-chips px-4 sm:px-6">
-          {/* 2 column grid layout - top row */}
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 w-full max-w-[650px]">
-            {/* BCA Rp1 */}
+        {/* Ticket boxes - 4 items grid pada layar > sm, dan 1 column grid pada layar mobile */}
+        <div className="absolute bottom-[10%] lg:bottom-[30%] left-0 right-0 z-20 flex flex-col items-center space-y-3 sm:space-y-4 font-crunch-chips px-4 sm:px-6">
+          {/* Grid untuk 4 box pink */}
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-[90%] sm:max-w-[85%] md:max-w-[80%]">
+            {/* Box 1: BCA Rp1 */}
             <div
-              className="bg-[#EC497F] rounded-3xl px-2 sm:px-3 py-2 sm:py-3 shadow-md w-full border-2 border-black flex flex-col min-h-[100px] sm:min-h-[150px]"
+              className="bg-[#EC497F] rounded-3xl px-4 py-2 shadow-md border-2 border-black"
               style={{
                 boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
               }}
             >
-              <div className="flex-grow flex items-center justify-center">
-                <span
-                  className="text-base sm:text-lg md:text-2xl font-bold text-white text-center"
+              <span
+                href="https://www.addtix.id/event/petfest-2025-promo-bca"
+                className="text-md sm:text-xl md:text-2xl font-bold text-white block text-center"
+                style={{
+                  textShadow: "2px 2px 0 #3F1508",
+                }}
+              >
+                BCA Rp 1
+              </span>
+              <div className="mt-1 text-center px-1">
+                <Button
+                  className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 font-crunch-chips border border-black"
                   style={{
-                    textShadow: "2px 2px 0 #3F1508",
+                    textShadow: "1px 1px 0 #3F1508",
+                    boxShadow: "1px 1px 0 #000",
                   }}
                 >
-                  BCA Rp 1
-                </span>
-              </div>
-              <div className="mt-1 sm:mt-2 text-center px-1">
-                <a href="https://www.addtix.id/event/petfest-2025-promo-bca" target="_blank" rel="noopener noreferrer" className="block">
-                  <Button
-                    className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 w-full font-crunch-chips border border-black"
-                    style={{
-                      textShadow: "1px 1px 0 #3F1508",
-                      boxShadow: "1px 1px 0 #000",
-                    }}
-                  >
+                  <Link href="https://www.addtix.id/event/petfest-2025-promo-bca">
                     CLICK HERE
-                  </Button>
-                </a>
+                  </Link>
+                </Button>
               </div>
             </div>
 
-            {/* Private session Gabriel Feitosa */}
+            {/* Box 2: General Admission */}
             <div
-              className="bg-[#EC497F] rounded-3xl px-2 sm:px-3 py-2 sm:py-3 shadow-md w-full border-2 border-black flex flex-col min-h-[100px] sm:min-h-[150px]"
+              className="bg-[#EC497F] rounded-3xl px-4 py-2 shadow-md border-2 border-black"
               style={{
                 boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
               }}
             >
-              <div className="flex-grow flex items-center justify-center">
-                <span
-                  className="text-base sm:text-lg md:text-2xl font-bold text-white text-center"
+              <span
+                className="text-md sm:text-xl md:text-2xl font-bold text-white block text-center"
+                style={{
+                  textShadow: "2px 2px 0 #3F1508",
+                }}
+              >
+                GENERAL ADMISSION
+              </span>
+              <div className="mt-1 text-center px-1">
+                <Button
+                  className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 font-crunch-chips border border-black"
                   style={{
-                    textShadow: "2px 2px 0 #3F1508",
+                    textShadow: "1px 1px 0 #3F1508",
+                    boxShadow: "1px 1px 0 #000",
                   }}
                 >
-                  PRIVATE SESSION<br />
-                  GABRIEL FEITOSA
-                </span>
-              </div>
-              <div className="mt-1 sm:mt-2 text-center px-1">
-                <a href="https://www.addtix.id/event/private-session-gabriel-feitosa" target="_blank" rel="noopener noreferrer" className="block">
-                  <Button
-                    className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 w-full font-crunch-chips border border-black"
-                    style={{
-                      textShadow: "1px 1px 0 #3F1508",
-                      boxShadow: "1px 1px 0 #000",
-                    }}
-                  >
+                  <Link href="https://www.addtix.id/event/petfest-2025">
                     CLICK HERE
-                  </Button>
-                </a>
-              </div>
-            </div>
-          </div>
-          
-          {/* 2 column grid layout - bottom row */}
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 w-full max-w-[650px]">
-            {/* General admission */}
-            <div
-              className="bg-[#EC497F] rounded-3xl px-2 sm:px-3 py-2 sm:py-3 shadow-md w-full border-2 border-black flex flex-col min-h-[100px] sm:min-h-[150px]"
-              style={{
-                boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
-              }}
-            >
-              <div className="flex-grow flex items-center justify-center">
-                <span
-                  className="text-base sm:text-lg md:text-2xl font-bold text-white text-center"
-                  style={{
-                    textShadow: "2px 2px 0 #3F1508",
-                  }}
-                >
-                  GENERAL<br />ADMISSION
-                </span>
-              </div>
-              <div className="mt-1 sm:mt-2 text-center px-1">
-                <a href="https://www.addtix.id/event/petfest-2025" target="_blank" rel="noopener noreferrer" className="block">
-                  <Button
-                    className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 w-full font-crunch-chips border border-black"
-                    style={{
-                      textShadow: "1px 1px 0 #3F1508",
-                      boxShadow: "1px 1px 0 #000",
-                    }}
-                  >
-                    CLICK HERE
-                  </Button>
-                </a>
+                  </Link>
+                </Button>
               </div>
             </div>
 
-            {/* Private session Jackson Galaxy */}
+            {/* Box 3: Private Session */}
             <div
-              className="bg-[#EC497F] rounded-3xl px-2 sm:px-3 py-2 sm:py-3 shadow-md w-full border-2 border-black flex flex-col min-h-[100px] sm:min-h-[150px]"
+              className="bg-[#EC497F] rounded-3xl px-4 py-2 shadow-md border-2 border-black"
               style={{
                 boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
               }}
             >
-              <div className="flex-grow flex items-center justify-center">
-                <span
-                  className="text-base sm:text-lg md:text-2xl font-bold text-white text-center"
+              <span
+                className="text-md sm:text-xl md:text-2xl font-bold text-white block text-center"
+                style={{
+                  textShadow: "2px 2px 0 #3F1508",
+                }}
+              >
+                PRIVATE SESSION
+                <br />
+                WITH JACKSON GALAXY
+              </span>
+              <div className="mt-1 text-center px-1">
+                <Button
+                  className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 font-crunch-chips border border-black"
                   style={{
-                    textShadow: "2px 2px 0 #3F1508",
+                    textShadow: "1px 1px 0 #3F1508",
+                    boxShadow: "1px 1px 0 #000",
                   }}
                 >
-                  PRIVATE SESSION<br />
-                  JACKSON GALAXY
-                </span>
-              </div>
-              <div className="mt-1 sm:mt-2 text-center px-1">
-                <a href="https://www.addtix.id/event/private-session" target="_blank" rel="noopener noreferrer" className="block">
-                  <Button
-                    className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 w-full font-crunch-chips border border-black"
-                    style={{
-                      textShadow: "1px 1px 0 #3F1508",
-                      boxShadow: "1px 1px 0 #000",
-                    }}
-                  >
+                  <Link href="https://www.addtix.id/event/private-session">
                     CLICK HERE
-                  </Button>
-                </a>
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Box 4: New Pink Box - Contoh dengan nama "VIP PACKAGE" */}
+            <div
+              className="bg-[#EC497F] rounded-3xl px-4 py-2 shadow-md border-2 border-black"
+              style={{
+                boxShadow: isMobile ? "1px 1px 0 #000" : "2px 2px 0 #000",
+              }}
+            >
+              <span
+                className="text-md sm:text-xl md:text-2xl font-bold text-white block text-center"
+                style={{
+                  textShadow: "2px 2px 0 #3F1508",
+                }}
+              >
+                PRIVATE SESSION
+                <br />
+                WITH Gabriel Feitosa
+              </span>
+              <div className="mt-1 text-center px-1">
+                <Button
+                  className="text-xs sm:text-sm font-bold bg-yellow-400 hover:bg-yellow-500 rounded-md px-2 py-1 font-crunch-chips border border-black"
+                  style={{
+                    textShadow: "1px 1px 0 #3F1508",
+                    boxShadow: "1px 1px 0 #000",
+                  }}
+                >
+                  <Link href="https://www.addtix.id/event/private-session-gabriel-feitosa">
+                    CLICK HERE
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -284,7 +274,7 @@ const Hero = ({ animals, onAnimalClick }) => {
 
         {/* Animals on hero page */}
         {/* Cat - bottom right */}
-        <div className="absolute lg:bottom-[13%] bottom-[30%] right-0 md:-right-7 z-10 w-24 h-24 sm:w-36 sm:h-36 md:w-[350px] md:h-[300px]">
+        <div className="absolute lg:bottom-[30%] bottom-[40%] right-0 md:-right-7 z-10 w-24 h-24 sm:w-36 sm:h-36 md:w-[350px] md:h-[300px]">
           <Image
             src="/motion/kucing-abu.gif"
             alt="Cat"
@@ -296,7 +286,7 @@ const Hero = ({ animals, onAnimalClick }) => {
         </div>
 
         {/* Iguana - bottom left */}
-        <div className="absolute bottom-[28%] md:bottom-[20%] left-4 md:left-20 z-10 w-24 h-24 sm:w-36 sm:h-36 md:w-[250px] md:h-[200px]">
+        <div className="absolute bottom-[40%] md:bottom-[35%] left-4 md:left-20 z-10 w-24 h-24 sm:w-36 sm:h-36 md:w-[250px] md:h-[200px]">
           <Image
             src="/motion/iguana.gif"
             alt="Iguana"
@@ -310,7 +300,7 @@ const Hero = ({ animals, onAnimalClick }) => {
         {/* Background image */}
         <div className="w-full relative">
           <Image
-            src="/images/bg-hero-2.jpg"
+            src="/images/bg-hero-new.jpg"
             alt="Jungle background with brick wall"
             width={1000}
             height={1000}

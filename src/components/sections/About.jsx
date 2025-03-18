@@ -15,15 +15,15 @@ const headerStyle = {
 
 const About = () => {
   return (
-    <section className="relative w-full min-h-screen bg-[#098A6C] overflow-hidden -top-2">
-      <div className="container-fluid w-full pt-8 md:pt-12">
+    <section className="relative w-full min-h-screen bg-[#098A6C] overflow-hidden -top-2 pt-10">
+      <div className="container-fluid w-full">
         {/* Header */}
         <div className="flex justify-center md:justify-start mb-10 md:mb-16 mx-6 md:px-8 lg:px-12">
           <div style={headerStyle}>
             <h2 className="text-[#3F1508] font-crunch-chips text-xl md:text-2xl lg:text-3xl">
               ABOUT US 
             </h2>
-          </div>
+          </div>  
         </div>
 
         {/* Content with position relative to allow absolute positioning */}
